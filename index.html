@@ -40,12 +40,17 @@
       gap: 1rem;
       background-color: var(--alt-bg);
       padding: 0.5rem;
+      flex-wrap: wrap;
     }
 
-    nav a {
-      text-decoration: none;
-      color: var(--main-color);
-      font-weight: bold;
+    nav button {
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
     }
 
     .banner {
@@ -77,6 +82,21 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1.1rem;
+      background-color: var(--accent-color);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    section a.button {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background-color: var(--main-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1rem;
     }
 
     footer {
@@ -87,6 +107,11 @@
       color: #555;
     }
   </style>
+  <script>
+    function scrollToSection(id) {
+      document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -98,45 +123,46 @@
   </header>
 
   <div class="banner">
-    📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии!
+    📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии! Вам не обязательно делать всё самим — специалист подберёт лучшее предложение бесплатно.
   </div>
 
   <nav>
-    <a href="#insurance">Страхование</a>
-    <a href="#energy">Энергия</a>
-    <a href="#internet">Интернет</a>
-    <a href="#finance">Финансы</a>
-    <a href="#blog">Блог</a>
+    <button onclick="scrollToSection('#insurance')">Страхование</button>
+    <button onclick="scrollToSection('#energy')">Энергия</button>
+    <button onclick="scrollToSection('#internet')">Интернет</button>
+    <button onclick="scrollToSection('#finance')">Финансы</button>
+    <button onclick="scrollToSection('#blog')">Блог</button>
   </nav>
 
   <main>
     <section id="insurance">
       <h2>Автострахование</h2>
-      <p>Сравни предложения от ведущих страховых компаний. <a href="#">Перейти к сравнениям</a></p>
+      <p>Сравни предложения от ведущих страховых компаний.</p>
+      <a class="button" href="#">Перейти к сравнениям</a>
     </section>
 
     <section id="energy">
-  <h2>Электричество и газ</h2>
-  <p>Узнай, где самые выгодные тарифы.</p>
-  <a href="electricity.html">Перейти к тарифам</a>
-</section>
+      <h2>Электричество и газ</h2>
+      <p>Узнай, где самые выгодные тарифы.</p>
+      <a class="button" href="electricity.html">Перейти к тарифам</a>
+    </section>
 
     <section id="internet">
       <h2>Интернет и мобильная связь</h2>
-      <p>Найди лучший тариф DSL или мобильной связи. <a href="mobile.html">Проверить предложения</a></p>
+      <p>Найди лучший тариф DSL или мобильной связи.</p>
+      <a class="button" href="mobile.html">Проверить предложения</a>
     </section>
 
-
     <section id="finance">
-  <h2>Получить карту банка С24</h2>
-  <p>Оформите карту и получите выгодные условия.</p>
-  <a href="finance.html">Подробнее</a>
-</section>
-
+      <h2>Получить карту банка С24</h2>
+      <p>Оформите карту и получите выгодные условия.</p>
+      <a class="button" href="finance.html">Подробнее</a>
+    </section>
 
     <section id="blog">
       <h2>Полезные советы</h2>
-      <p>Руководства по переезду, регистрации, экономии. <a href="#">Читать блог</a></p>
+      <p>Руководства по переезду, регистрации, экономии.</p>
+      <a class="button" href="#">Читать блог</a>
     </section>
   </main>
 

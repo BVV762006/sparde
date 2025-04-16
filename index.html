@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sparde</title>
+  <style>
+    :root {
+      --main-color: #1a73e8;
+      --accent-color: #fbbc05;
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --alt-bg: #f0f0f0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      background-color: var(--alt-bg);
+      padding: 0.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .banner {
+      background-color: var(--accent-color);
+      color: black;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .language-switch a {
+      margin-left: 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: var(--alt-bg);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="language-switch">
+      <a href="de.html">DE</a>
+    </div>
+    <h1>Sparde</h1>
+    <p>Сравнивай и экономь на страховке, энергии и интернете</p>
+  </header>
+
+  <div class="banner">
+    📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии!
+  </div>
+
+  <nav>
+    <a href="#insurance">Страхование</a>
+    <a href="#energy">Энергия</a>
+    <a href="#internet">Интернет</a>
+    <a href="#finance">Финансы</a>
+    <a href="#blog">Блог</a>
+  </nav>
+
+  <main>
+    <section id="insurance">
+      <h2>Автострахование</h2>
+      <p>Сравни предложения от ведущих страховых компаний. <a href="#">Перейти к сравнениям</a></p>
+    </section>
+
+    <section id="energy">
+      <h2>Электричество и газ</h2>
+      <p>Узнай, где самые выгодные тарифы. <a href="#">Сравнить тарифы</a></p>
+    </section>
+
+    <section id="internet">
+      <h2>Интернет и мобильная связь</h2>
+      <p>Найди лучший тариф DSL или мобильной связи. <a href="#">Проверить предложения</a></p>
+    </section>
+
+    <section id="finance">
+      <h2>Финансы и кредиты</h2>
+      <p>Подобрать выгодный кредит или открыть счёт в банке. <a href="#">Посмотреть условия</a></p>
+    </section>
+
+    <section id="blog">
+      <h2>Полезные советы</h2>
+      <p>Руководства по переезду, регистрации, экономии. <a href="#">Читать блог</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sparde. Все права защищены.</p>
+  </footer>
+</body>
+</html>

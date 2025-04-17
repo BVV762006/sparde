@@ -134,12 +134,22 @@
     <button onclick="scrollToSection('#blog')">Блог</button>
   </nav>
 
-  <main>
-    <section id="insurance">
-      <h2>Страхование транспортных средств</h2>
-      <p>Сравни предложения от ведущих страховых компаний.</p>
-      <a class="button" href="#">Перейти к сравнениям</a>
-    </section>
+  <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор страхования</title>
+</head>
+<body>
+    <h2>Выберите вид страхования</h2>
+
+    <button onclick="document.write('<div style=\'width: 100%\' id=\'tcpp-iframe-kfz\'></div><script src=\'https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js\'></script>');">Автострахование</button>
+    
+    <button onclick="document.write('<div style=\'width: 100%\' id=\'tcpp-iframe-kfz\'></div><script src=\'https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js\'></script>');">Страхование мотоцикла</button>
+
+</body>
+</html>
 
     <section id="energy">
       <h2>Электричество и газ</h2>

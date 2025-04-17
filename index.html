@@ -8,7 +8,7 @@
         :root {
             --main-color: #1a73e8;
             --accent-color: #fbbc05;
-            --bg-color: #e6e6e6; /* Светло-серый фон */
+            --bg-color: #ffffff; /* Вернул белый фон */
             --text-color: #111111;
             --alt-bg: #f0f0f0;
             --button-bg: #1a73e8;
@@ -29,6 +29,22 @@
             padding: 1rem;
             text-align: center;
             position: relative;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .language-switch a {
+            font-weight: bold; /* Сделал текст жирным */
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+            background-color: var(--accent-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
         }
 
         nav {
@@ -82,7 +98,7 @@
 
     <header>
         <div class="language-switch">
-            <a href="de.html">DE</a>
+            <a href="index_de.html">DE</a> <!-- Открывает немецкую версию сайта -->
         </div>
         <h1>Sparde</h1>
         <p>Сравнивай и экономь на страховке, энергии и интернете</p>

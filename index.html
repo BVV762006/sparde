@@ -1,219 +1,196 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SparDE</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparDE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --main-color: #1a73e8;
+            --accent-color: #fbbc05;
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --alt-bg: #f0f0f0;
+            --button-bg: #1a73e8;
+            --button-text: white;
+        }
 
-    :root {
-      --main-color: #1a73e8;
-      --accent-color: #fbbc05;
-      --bg-color: #ffffff;
-      --text-color: #111111;
-      --alt-bg: #f0f0f0;
-      --button-bg: #1a73e8;
-      --button-text: white;
-    }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-      font-size: 18px;
-      line-height: 1.6;
-    }
+        header {
+            background: url('https://images.unsplash.com/photo-1581091012184-5c8a3e86a3dc?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: white;
+            padding: 3rem 1rem 2rem;
+            text-align: center;
+            position: relative;
+        }
 
-    header {
-      background: url('https://source.unsplash.com/1600x400/?technology,insurance,finance') no-repeat center/cover;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+        .site-title {
+            font-size: 3rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            margin: 0.5rem 0 0.2rem;
+        }
 
-    header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.5rem;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #fbbc05, #ffffff, #1a73e8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-      margin: 0.5rem 0;
-      animation: pulse 2s infinite;
-    }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.9; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+        .language-switch {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
 
-    .language-switch {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-      gap: 0.5rem;
-    }
+        .language-switch a {
+            font-weight: bold;
+            font-size: 1rem;
+            color: white;
+            text-decoration: none;
+            background-color: var(--accent-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+        }
 
-    .language-switch a {
-      font-weight: bold;
-      font-size: 1rem;
-      color: white;
-      text-decoration: none;
-      background-color: var(--accent-color);
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      border: 2px solid transparent;
-    }
+        .language-switch a.active {
+            border: 2px solid white;
+            text-decoration: underline;
+        }
 
-    .language-switch a.active {
-      border-color: white;
-      text-decoration: underline;
-    }
+        nav {
+            background-color: var(--alt-bg);
+            padding: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      background-color: var(--alt-bg);
-      padding: 1rem;
-      flex-wrap: wrap;
-    }
+        .button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s;
+        }
 
-    button, .button {
-      background-color: var(--button-bg);
-      color: var(--button-text);
-      border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: background-color 0.3s;
-      max-width: 300px;
-    }
+        .button:hover {
+            background-color: #155ab6;
+        }
 
-    button:hover, .button:hover {
-      background-color: #155ab6;
-    }
+        .container {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: auto;
+        }
 
-    .container {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
+        section {
+            margin-bottom: 3rem;
+        }
 
-    #insurance-container {
-      margin-top: 20px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--alt-bg);
+        }
+    </style>
+    <script>
+        function scrollToSection(id) {
+            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+        }
 
-    .icon {
-      width: 20px;
-      height: 20px;
-    }
-  </style>
-
-  <script>
-    function scrollToSection(id) {
-      document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function loadInsurance(type) {
-      let container = document.getElementById("insurance-container");
-      container.innerHTML = `<div style="width: 100%" id="tcpp-iframe-kfz"></div>
-        <script src="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js"></script>`;
-    }
-  </script>
+        function loadInsurance(type) {
+            let container = document.getElementById("insurance-container");
+            container.innerHTML = `<div style="width: 100%" id="tcpp-iframe-kfz"></div>
+                <script src="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js"></script>`;
+        }
+    </script>
 </head>
 <body>
 
-  <header>
+<header>
     <div class="language-switch">
-      <a href="index_de.html">DE</a>
-      <a href="index.html" class="active">RU</a>
+        <a href="#" class="active">RU</a>
+        <a href="index_de.html">DE</a>
     </div>
-    <h1>SparDE</h1>
+    <h1 class="site-title">SparDE</h1>
     <p>Сравнивай и экономь на страховке, энергии и интернете</p>
-  </header>
+</header>
 
-  <nav>
-    <button onclick="scrollToSection('#insurance')">
-      <img src="https://img.icons8.com/ios-filled/50/car.png" alt="car" class="icon"/> Страхование
-    </button>
-    <button onclick="scrollToSection('#energy')">
-      <img src="https://img.icons8.com/ios-filled/50/lightning-bolt.png" alt="energy" class="icon"/> Энергия
-    </button>
-    <button onclick="scrollToSection('#internet')">
-      <img src="https://img.icons8.com/ios-filled/50/wifi.png" alt="internet" class="icon"/> Интернет
-    </button>
-    <button onclick="scrollToSection('#finance')">
-      <img src="https://img.icons8.com/ios-filled/50/card-in-use.png" alt="finance" class="icon"/> Финансы
-    </button>
-    <button onclick="scrollToSection('#blog')">
-      <img src="https://img.icons8.com/ios-filled/50/news.png" alt="blog" class="icon"/> Блог
-    </button>
-  </nav>
+<nav>
+    <a class="button" onclick="scrollToSection('#insurance')"><i class="fas fa-car"></i> Страхование</a>
+    <a class="button" onclick="scrollToSection('#energy')"><i class="fas fa-bolt"></i> Энергия</a>
+    <a class="button" onclick="scrollToSection('#internet')"><i class="fas fa-wifi"></i> Интернет</a>
+    <a class="button" onclick="scrollToSection('#finance')"><i class="fas fa-credit-card"></i> Финансы</a>
+    <a class="button" onclick="scrollToSection('#blog')"><i class="fas fa-book"></i> Блог</a>
+</nav>
 
-  <main>
+<main>
     <div class="container">
-      <section id="insurance">
-        <h2>Страхование транспорта</h2>
-        <button onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
-        <button onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
-        <div id="insurance-container"></div>
-      </section>
+        <section id="insurance">
+            <h2>Страхование транспорта</h2>
+            <button class="button" onclick="loadInsurance('car')">🚗 Автострахование</button>
+            <button class="button" onclick="loadInsurance('bike')">🏍️ Страхование мотоцикла</button>
+            <div id="insurance-container"></div>
+        </section>
 
-      <section id="energy">
-        <h2>Электричество и газ</h2>
-        <p>Узнай, где самые выгодные тарифы.</p>
-        <a class="button" href="electricity.html">
-          ⚡ Перейти к тарифам
-        </a>
-      </section>
+        <section id="energy">
+            <h2>Электричество и газ</h2>
+            <p>Узнай, где самые выгодные тарифы.</p>
+            <a class="button" href="electricity.html"><i class="fas fa-plug"></i> Перейти к тарифам</a>
+        </section>
 
-      <section id="internet">
-        <h2>Интернет и мобильная связь</h2>
-        <p>Найди лучший тариф DSL или мобильной связи.</p>
-        <a class="button" href="mobile.html">📶 Все предложения</a>
-        <div style="display: flex; gap: 5px; justify-content: center;">
-          <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
-          <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
-          <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
-        </div>
-      </section>
+        <section id="internet">
+            <h2>Интернет и мобильная связь</h2>
+            <p>Найди лучший тариф DSL или мобильной связи.</p>
+            <a class="button" href="mobile.html"><i class="fas fa-signal"></i> Все предложения</a>
+            <div style="display: flex; gap: 5px; justify-content: center; flex-wrap: wrap;">
+                <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" style="flex: none; width: 140px;" target="_blank">SIM24.DE</a>
+                <a class="button" href="https://aklam.io/d9gDjq" style="flex: none; width: 140px;" target="_blank">LEBARA</a>
+                <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" style="flex: none; width: 140px;" target="_blank">SIM.DE</a>
+            </div>
+        </section>
 
-      <section id="finance">
-        <h2>Получить карту банка С24</h2>
-        <p>Оформите карту и получите выгодные условия.</p>
-        <a class="button" href="finance.html">💳 Подробнее</a>
-      </section>
+        <section id="finance">
+            <h2>Получить карту банка С24</h2>
+            <p>Оформите карту и получите выгодные условия.</p>
+            <a class="button" href="finance.html"><i class="fas fa-wallet"></i> Подробнее</a>
+        </section>
 
-      <section id="blog">
-        <h2>Полезные советы</h2>
-        <p>Руководства по переезду, регистрации, экономии.</p>
-        <a href="blog.html" class="button">📰 Перейти в блог</a>
-      </section>
+        <section id="blog">
+            <h2>Полезные советы</h2>
+            <p>Руководства по переезду, регистрации, экономии.</p>
+            <a href="blog.html" class="button"><i class="fas fa-book-open"></i> Перейти в блог</a>
+        </section>
     </div>
-  </main>
+</main>
 
-  <footer>
+<footer>
     <p>&copy; 2025 SparDE. Все права защищены.</p>
-  </footer>
+</footer>
 
 </body>
 </html>

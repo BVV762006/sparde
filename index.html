@@ -8,7 +8,7 @@
         :root {
             --main-color: #1a73e8;
             --accent-color: #fbbc05;
-            --bg-color: #ffffff; /* Вернул белый фон */
+            --bg-color: #ffffff;
             --text-color: #111111;
             --alt-bg: #f0f0f0;
             --button-bg: #1a73e8;
@@ -21,6 +21,8 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
+            font-size: 18px; /* Увеличенный размер текста */
+            line-height: 1.6; /* Удобочитаемость */
         }
 
         header {
@@ -38,7 +40,7 @@
         }
 
         .language-switch a {
-            font-weight: bold; /* Сделал текст жирным */
+            font-weight: bold;
             font-size: 1.2rem;
             color: white;
             text-decoration: none;
@@ -52,7 +54,7 @@
             justify-content: center;
             gap: 1rem;
             background-color: var(--alt-bg);
-            padding: 0.5rem;
+            padding: 1rem;
             flex-wrap: wrap;
         }
 
@@ -60,14 +62,16 @@
             background-color: var(--button-bg);
             color: var(--button-text);
             border: none;
-            padding: 10px 20px;
+            padding: 15px 25px; /* Увеличенные кнопки */
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 1.2rem; /* Четкий текст */
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
             text-align: center;
             transition: background-color 0.3s;
+            width: 100%; /* Заполняет всю ширину */
+            max-width: 300px; /* Ограничение ширины */
         }
 
         button:hover, .button:hover {
@@ -76,10 +80,16 @@
 
         .container {
             padding: 2rem;
+            max-width: 800px;
+            margin: auto;
         }
 
         #insurance-container {
             margin-top: 20px;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Плавная прокрутка */
         }
     </style>
     <script>
@@ -98,60 +108,20 @@
 
     <header>
         <div class="language-switch">
-            <a href="index_de.html">DE</a> <!-- Открывает немецкую версию сайта -->
+            <a href="index_de.html">DE</a> <!-- Версия сайта на немецком языке -->
         </div>
         <h1>Sparde</h1>
         <p>Сравнивай и экономь на страховке, энергии и интернете</p>
     </header>
 
-    <div class="banner">
-        📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии!
-    </div>
-
-    <nav>
-        <button onclick="scrollToSection('#insurance')">Страхование</button>
-        <button onclick="scrollToSection('#energy')">Энергия</button>
-        <button onclick="scrollToSection('#internet')">Интернет</button>
-        <button onclick="scrollToSection('#finance')">Финансы</button>
-        <button onclick="scrollToSection('#blog')">Блог</button>
-    </nav>
-
-    <main>
+    <div class="container">
         <section id="insurance">
             <h2>Страхование транспорта</h2>
-            <button onclick="loadInsurance('car')">Автострахование</button>
-            <button onclick="loadInsurance('bike')">Страхование мотоцикла</button>
+            <button onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
+            <button onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
             <div id="insurance-container"></div>
         </section>
-
-        <section id="energy">
-            <h2>Электричество и газ</h2>
-            <p>Узнай, где самые выгодные тарифы.</p>
-            <a class="button" href="electricity.html">Перейти к тарифам</a>
-        </section>
-
-        <section id="internet">
-            <h2>Интернет и мобильная связь</h2>
-            <p>Найди лучший тариф DSL или мобильной связи.</p>
-            <a class="button" href="mobile.html">Проверить предложения</a>
-        </section>
-
-        <section id="finance">
-            <h2>Получить карту банка С24</h2>
-            <p>Оформите карту и получите выгодные условия.</p>
-            <a class="button" href="finance.html">Подробнее</a>
-        </section>
-
-        <section id="blog">
-            <h2>Полезные советы</h2>
-            <p>Руководства по переезду, регистрации, экономии.</p>
-            <a href="blog.html" class="button">Перейти в блог</a>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Sparde. Все права защищены.</p>
-    </footer>
+    </div>
 
 </body>
 </html>

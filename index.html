@@ -1,198 +1,141 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>S P A R de</title>
-  <style>
-    :root {
-      --main-color: #1a73e8;
-      --accent-color: #fbbc05;
-      --bg-color: #ffffff;
-      --text-color: #111111;
-      --alt-bg: #f0f0f0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: var(--main-color);
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      position: relative;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      background-color: var(--alt-bg);
-      padding: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    nav button {
-      background-color: var(--main-color);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .banner {
-      background-color: var(--accent-color);
-      color: black;
-      padding: 1rem;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    main {
-      padding: 2rem;
-    }
-
-    section {
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 1rem;
-    }
-
-    .language-switch {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-    }
-
-    .language-switch a {
-      margin-left: 1rem;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-      background-color: var(--accent-color);
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    section a.button {
-      display: inline-block;
-      margin-top: 0.5rem;
-      background-color: var(--main-color);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-
-    footer {
-      background-color: var(--alt-bg);
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-  </style>
-  <script>
-    function scrollToSection(id) {
-      document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
-</head>
-<body>
-  <header>
-    <div class="language-switch">
-      <a href="de.html">DE</a>
-    </div>
-    <h1>Sparde</h1>
-    <p>Сравнивай и экономь на страховке, энергии и интернете</p>
-  </header>
-
-  <div class="banner">
-    📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии! Вам не обязательно делать всё самим — специалист подберёт лучшее предложение бесплатно.
-  </div>
-
-  <nav>
-    <button onclick="scrollToSection('#insurance')">Страхование</button>
-    <button onclick="scrollToSection('#energy')">Энергия</button>
-    <button onclick="scrollToSection('#internet')">Интернет</button>
-    <button onclick="scrollToSection('#finance')">Финансы</button>
-    <button onclick="scrollToSection('#blog')">Блог</button>
-  </nav>
-
-  <!DOCTYPE html>
-<html lang="ru">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Выбор страхования</title>
+    <title>S P A R de</title>
+    <style>
+        :root {
+            --main-color: #1a73e8;
+            --accent-color: #fbbc05;
+            --bg-color: #e6e6e6; /* Светло-серый фон */
+            --text-color: #111111;
+            --alt-bg: #f0f0f0;
+            --button-bg: #1a73e8;
+            --button-text: white;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--main-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background-color: var(--alt-bg);
+            padding: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        button, .button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        button:hover, .button:hover {
+            background-color: #155ab6;
+        }
+
+        .container {
+            padding: 2rem;
+        }
+
+        #insurance-container {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function scrollToSection(id) {
+            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function loadInsurance(type) {
+            let container = document.getElementById("insurance-container");
+            container.innerHTML = `<div style="width: 100%" id="tcpp-iframe-kfz"></div>
+                <script src="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js"></script>`;
+        }
+    </script>
 </head>
 <body>
-    <h2>Выберите вид страхования</h2>
 
-    <button onclick="document.write('<div style=\'width: 100%\' id=\'tcpp-iframe-kfz\'></div><script src=\'https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js\'></script>');">Автострахование</button>
-    
-    <button onclick="document.write('<div style=\'width: 100%\' id=\'tcpp-iframe-kfz\'></div><script src=\'https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js\'></script>');">Страхование мотоцикла</button>
+    <header>
+        <div class="language-switch">
+            <a href="de.html">DE</a>
+        </div>
+        <h1>Sparde</h1>
+        <p>Сравнивай и экономь на страховке, энергии и интернете</p>
+    </header>
 
-</body>
-</html>
+    <div class="banner">
+        📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии!
+    </div>
 
-    <section id="energy">
-      <h2>Электричество и газ</h2>
-      <p>Узнай, где самые выгодные тарифы.</p>
-      <a class="button" href="electricity.html">Перейти к тарифам</a>
-    </section>
+    <nav>
+        <button onclick="scrollToSection('#insurance')">Страхование</button>
+        <button onclick="scrollToSection('#energy')">Энергия</button>
+        <button onclick="scrollToSection('#internet')">Интернет</button>
+        <button onclick="scrollToSection('#finance')">Финансы</button>
+        <button onclick="scrollToSection('#blog')">Блог</button>
+    </nav>
 
-    <section id="internet">
-      <h2>Интернет и мобильная связь</h2>
-      <p>Найди лучший тариф DSL или мобильной связи.</p>
-      <a class="button" href="mobile.html">Проверить предложения</a>
-    </section>
+    <main>
+        <section id="insurance">
+            <h2>Страхование транспорта</h2>
+            <button onclick="loadInsurance('car')">Автострахование</button>
+            <button onclick="loadInsurance('bike')">Страхование мотоцикла</button>
+            <div id="insurance-container"></div>
+        </section>
 
-    <section id="finance">
-      <h2>Получить карту банка С24</h2>
-      <p>Оформите карту и получите выгодные условия.</p>
-      <a class="button" href="finance.html">Подробнее</a>
-    </section>
+        <section id="energy">
+            <h2>Электричество и газ</h2>
+            <p>Узнай, где самые выгодные тарифы.</p>
+            <a class="button" href="electricity.html">Перейти к тарифам</a>
+        </section>
 
-   <section id="blog">
-  <h2>Полезные советы</h2>
-  <p>Руководства по переезду, регистрации, экономии.</p>
-  <a href="blog.html" class="btn">Перейти в блог</a>
-</section>
+        <section id="internet">
+            <h2>Интернет и мобильная связь</h2>
+            <p>Найди лучший тариф DSL или мобильной связи.</p>
+            <a class="button" href="mobile.html">Проверить предложения</a>
+        </section>
 
-<style>
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #1a73e8;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    text-align: center;
-  }
-  .btn:hover {
-    background-color: #155ab6;
-  }
-</style>
+        <section id="finance">
+            <h2>Получить карту банка С24</h2>
+            <p>Оформите карту и получите выгодные условия.</p>
+            <a class="button" href="finance.html">Подробнее</a>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 Sparde. Все права защищены.</p>
-  </footer>
+        <section id="blog">
+            <h2>Полезные советы</h2>
+            <p>Руководства по переезду, регистрации, экономии.</p>
+            <a href="blog.html" class="button">Перейти в блог</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sparde. Все права защищены.</p>
+    </footer>
+
 </body>
 </html>

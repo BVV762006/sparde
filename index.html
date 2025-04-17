@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S P A R de</title>
+    <title>S P A R D E</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Сравнивай и экономь на страховке, энергии и интернете.">
+    <meta name="keywords" content="страхование, энергия, интернет, мобильная связь, сравнение тарифов">
+    <meta property="og:title" content="Sparde – сравнение цен в Германии">
+    <meta property="og:description" content="Сравнивай и экономь на страховке, энергии, интернете и банковских услугах.">
+    <meta property="og:type" content="website">
+
     <style>
         :root {
             --main-color: #1a73e8;
@@ -88,20 +96,102 @@
             margin-top: 20px;
         }
 
+        footer {
+            background-color: var(--alt-bg);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         html {
             scroll-behavior: smooth;
         }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sim-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .sim-links .button {
+            flex: 1 1 100px;
+            max-width: 120px;
+            font-size: 1rem;
+            padding: 10px;
+        }
+
+        @media (max-width: 600px) {
+            button, .button {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+
+            nav {
+                gap: 0.5rem;
+            }
+
+            .language-switch a {
+                font-size: 1rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .sim-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sim-links .button {
+                max-width: 90%;
+            }
+        }
     </style>
+
     <script>
         function scrollToSection(id) {
             document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
         }
-        
+
         function loadInsurance(type) {
-            let container = document.getElementById("insurance-container");
-            container.innerHTML = `<div style="width: 100%" id="tcpp-iframe-kfz"></div>
-                <script src="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js"></script>`;
+            const container = document.getElementById("insurance-container");
+            container.innerHTML = `<div style="width: 100%" id="tcpp-iframe-kfz"></div>`;
+
+            const script = document.createElement("script");
+            script.src = "https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js";
+            script.async = true;
+            container.appendChild(script);
         }
+
+        // Анимация появления секций при скролле
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => observer.observe(section));
+        });
     </script>
 </head>
 <body>
@@ -137,18 +227,16 @@
                 <a class="button" href="electricity.html">Перейти к тарифам</a>
             </section>
 
-           <section id="internet">
-    <h2>Интернет и мобильная связь</h2>
-    <p>Найди лучший тариф DSL или мобильной связи.</p>
-    <a class="button" href="mobile.html">Все предложения</a>
-    <div style="display: flex; gap: 5px; justify-content: center;">
-        <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" style="flex: none; width: 100px;" target="_blank">SIM24.DE</a>
-        <a class="button" href="https://aklam.io/d9gDjq" style="flex: none; width: 100px;" target="_blank">LEBARA</a>
-        <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" style="flex: none; width: 100px;" target="_blank">SIM.DE</a>
-    </div>
-</section>
-
-
+            <section id="internet">
+                <h2>Интернет и мобильная связь</h2>
+                <p>Найди лучший тариф DSL или мобильной связи.</p>
+                <a class="button" href="mobile.html">Все предложения</a>
+                <div class="sim-links">
+                    <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
+                    <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
+                    <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
+                </div>
+            </section>
 
             <section id="finance">
                 <h2>Получить карту банка С24</h2>

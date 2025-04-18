@@ -211,11 +211,13 @@
             container.innerHTML = '<p>Загрузка...</p>';
             const div = document.createElement('div');
             div.style.width = '100%';
-            div.id = `tcpp-iframe-${type}`;
+            div.id = type === 'car' ? 'tcpp-iframe-kfz' : 'tcpp-iframe-bike';
             container.appendChild(div);
 
             const script = document.createElement('script');
-            script.src = `https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-${type}/${type}-iframe.js`;
+            script.src = type === 'car' 
+                ? 'https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js'
+                : 'https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-bike/bike-iframe.js';
             script.async = true;
             script.onerror = () => {
                 container.innerHTML = '<p>Ошибка загрузки виджета. Попробуйте позже.</p>';

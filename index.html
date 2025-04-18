@@ -1,107 +1,144 @@
+
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SparDE - сравнивайте и экономьте на страховке, энергии и интернете в Германии.">
-    <meta name="keywords" content="страхование, энергия, интернет, финансы, Германия, SparDE">
-    <title>SparDE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    <style>
-      /* стили перенесены из предыдущего ответа */
-    </style>
-    <script>
-      /* JS логика из предыдущего ответа */
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sparde</title>
+  <style>
+    :root {
+      --main-color: #1a73e8;
+      --accent-color: #fbbc05;
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --alt-bg: #f0f0f0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      background-color: var(--alt-bg);
+      padding: 0.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .banner {
+      background-color: var(--accent-color);
+      color: black;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .language-switch a {
+      margin-left: 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: var(--alt-bg);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Переключить на темную тему">
-      <i class="fas fa-moon"></i>
-    </button>
-    <button class="hamburger" type="button" onclick="toggleMenu()" aria-label="Открыть меню">
-      <i class="fas fa-bars"></i>
-    </button>
     <div class="language-switch">
-      <a href="index_ru.html" class="ru active" target="_blank">RU</a>
-      <a href="index_de.html" class="de" target="_blank">DE</a>
+      <a href="de.html">DE</a>
     </div>
-    <h1 class="site-title">SparDE</h1>
+    <h1>Sparde</h1>
     <p>Сравнивай и экономь на страховке, энергии и интернете</p>
   </header>
 
+  <div class="banner">
+    📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии!
+  </div>
+
   <nav>
-    <button type="button" onclick="scrollToSection('#insurance')"><i class="fas fa-car"></i> Страхование</button>
-    <button type="button" onclick="scrollToSection('#energy')"><i class="fas fa-bolt"></i> Энергия</button>
-    <button type="button" onclick="scrollToSection('#internet')"><i class="fas fa-wifi"></i> Интернет</button>
-    <button type="button" onclick="scrollToSection('#finance')"><i class="fas fa-credit-card"></i> Финансы</button>
-    <button type="button" onclick="scrollToSection('#blog')"><i class="fas fa-newspaper"></i> Блог</button>
-    <button type="button" onclick="scrollToSection('#contact')"><i class="fas fa-envelope"></i> Контакты</button>
+    <a href="#insurance">Страхование</a>
+    <a href="#energy">Энергия</a>
+    <a href="#internet">Интернет</a>
+    <a href="#finance">Финансы</a>
+    <a href="#blog">Блог</a>
   </nav>
 
   <main>
-    <div class="container">
-      <section id="insurance">
-        <h2>Страхование</h2>
-        <p>Найдите лучшие предложения по медицинскому, автомобильному и другим видам страхования.</p>
-        <div class="button-group">
-          <a href="#" class="button"><i class="fas fa-heartbeat"></i> Медицинская страховка</a>
-          <a href="#" class="button"><i class="fas fa-car-crash"></i> Автострахование</a>
-        </div>
-      </section>
-      <section id="energy">
-        <h2>Энергия</h2>
-        <p>Сравните цены на электроэнергию и газ и выберите лучший тариф.</p>
-        <div class="button-group">
-          <a href="#" class="button"><i class="fas fa-plug"></i> Электроэнергия</a>
-          <a href="#" class="button"><i class="fas fa-fire"></i> Газ</a>
-        </div>
-      </section>
-      <section id="internet">
-        <h2>Интернет</h2>
-        <p>Подберите выгодный тариф на интернет и мобильную связь.</p>
-        <div class="button-group">
-          <a href="#" class="button"><i class="fas fa-wifi"></i> Домашний интернет</a>
-          <a href="#" class="button"><i class="fas fa-mobile-alt"></i> Мобильная связь</a>
-        </div>
-      </section>
-      <section id="finance">
-        <h2>Финансы</h2>
-        <p>Сравните банковские продукты: счета, кредиты и кредитные карты.</p>
-        <div class="button-group">
-          <a href="#" class="button"><i class="fas fa-university"></i> Банковские счета</a>
-          <a href="#" class="button"><i class="fas fa-credit-card"></i> Кредитные карты</a>
-        </div>
-      </section>
-      <section id="blog">
-        <h2>Блог</h2>
-        <p>Полезные советы и свежие статьи для жизни в Германии.</p>
-        <div class="button-group">
-          <a href="#" class="button"><i class="fas fa-newspaper"></i> Читать статьи</a>
-        </div>
-      </section>
-      <section id="contact">
-        <h2>Связаться с нами</h2>
-        <p>Есть вопросы или предложения? Напишите нам!</p>
-        <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
-          <input type="text" name="name" placeholder="Ваше имя" required>
-          <input type="email" name="_replyto" placeholder="Ваш email" required>
-          <textarea name="message" placeholder="Ваше сообщение" rows="5" required></textarea>
-          <button type="submit" class="button"><i class="fas fa-paper-plane"></i> Отправить</button>
-        </form>
-      </section>
-    </div>
+    <section id="insurance">
+      <h2>Автострахование</h2>
+      <p>Сравни предложения от ведущих страховых компаний. <a href="#">Перейти к сравнениям</a></p>
+    </section>
+
+    <section id="energy">
+      <h2>Электричество и газ</h2>
+      <p>Узнай, где самые выгодные тарифы. <a href="#">Сравнить тарифы</a></p>
+    </section>
+
+    <section id="internet">
+      <h2>Интернет и мобильная связь</h2>
+      <p>Найди лучший тариф DSL или мобильной связи. <a href="#">Проверить предложения</a></p>
+    </section>
+
+    <section id="finance">
+      <h2>Финансы и кредиты</h2>
+      <p>Подобрать выгодный кредит или открыть счёт в банке. <a href="#">Посмотреть условия</a></p>
+    </section>
+
+    <section id="blog">
+      <h2>Полезные советы</h2>
+      <p>Руководства по переезду, регистрации, экономии. <a href="#">Читать блог</a></p>
+    </section>
   </main>
 
   <footer>
-    <p>© <span id="footer-year"></span> SparDE. Все права защищены.</p>
+    <p>&copy; 2025 Sparde. Все права защищены.</p>
   </footer>
 </body>
 </html>

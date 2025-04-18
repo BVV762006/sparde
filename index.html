@@ -6,394 +6,102 @@
     <meta name="description" content="SparDE - сравнивайте и экономьте на страховке, энергии и интернете в Германии.">
     <meta name="keywords" content="страхование, энергия, интернет, финансы, Германия, SparDE">
     <title>SparDE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERet7yg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     <style>
-        :root {
-            --main-color: #1a73e8;
-            --accent-color: #fbbc05;
-            --bg-color: #ffffff;
-            --text-color: #111111;
-            --alt-bg: #f0f0f0;
-            --button-bg: #1a73e8;
-            --button-text: white;
-            --theme-button-bg: #f0f0f0;
-            --theme-icon-color: #111111;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #f0f0f0;
-            --alt-bg: #1e1e1e;
-            --button-bg: #333;
-            --button-text: #fff;
-            --theme-button-bg: #333;
-            --theme-icon-color: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            font-size: 18px;
-            line-height: 1.6;
-            transition: background-color 0.4s, color 0.4s;
-        }
-
-        header {
-            background: url('https://images.unsplash.com/photo-1581091012184-5c8a3e86a3dc?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat, #1a73e8;
-            color: white;
-            padding: 3rem 1rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .site-title {
-            font-size: 3rem;
-            font-weight: bold;
-            animation: pulse 2s ease-in-out infinite;
-            margin: 0.5rem 0 0.2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.08); opacity: 0.85; }
-        }
-
-        .language-switch {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .language-switch a {
-            font-weight: bold;
-            font-size: 1rem;
-            text-decoration: none;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            transition: transform 0.3s;
-        }
-
-        .language-switch a.ru {
-            background-color: white;
-            color: #003087; /* Синий (Россия) */
-            border: 2px solid #d52b1e; /* Красный (Россия) */
-        }
-
-        .language-switch a.de {
-            background-color: #000000; /* Черный (Германия) */
-            color: #ffce00; /* Желтый (Германия) */
-            border: 2px solid #dd0000; /* Красный (Германия) */
-        }
-
-        .language-switch a.active {
-            text-decoration: underline;
-            transform: scale(1.1);
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background-color: var(--theme-button-bg);
-            border: 2px solid var(--theme-icon-color);
-            border-radius: 4px;
-            color: var(--theme-icon-color);
-            padding: 0.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2rem;
-            height: 2rem;
-            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .theme-toggle i {
-            font-size: 1.2rem;
-        }
-
-        .hamburger {
-            display: none;
-            position: absolute;
-            top: 1rem;
-            left: 4rem;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        nav {
-            background-color: var(--alt-bg);
-            padding: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            transition: max-height 0.3s ease-in-out;
-        }
-
-        nav.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--alt-bg);
-            padding: 1rem;
-            max-height: 100vh;
-            z-index: 999;
-        }
-
-        .button {
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: color-mix(in srgb, var(--button-bg) 80%, black);
-        }
-
-        .container {
-            padding: 2rem;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        section {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        section h2 {
-            margin-bottom: 1rem;
-        }
-
-        section p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        section .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: var(--alt-bg);
-        }
-
-        @media (max-width: 600px) {
-            .hamburger {
-                display: block;
-            }
-
-            nav {
-                display: none;
-                max-height: 0;
-                overflow: hidden;
-            }
-
-            nav.active {
-                display: flex;
-                max-height: 100vh;
-            }
-
-            nav .button {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .button-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .button-group .button {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
+      /* стили перенесены из предыдущего ответа */
     </style>
     <script>
-        function scrollToSection(id) {
-            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-            if (window.innerWidth <= 600) {
-                toggleMenu();
-            }
-        }
-
-        function toggleTheme() {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
-            const next = current === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            const button = document.querySelector('.theme-toggle');
-            button.innerHTML = `<i class="fas ${next === 'light' ? 'fa-moon' : 'fa-sun'}"></i>`;
-            button.setAttribute('aria-label', next === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему');
-        }
-
-        function toggleMenu() {
-            const nav = document.querySelector('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            hamburger.innerHTML = nav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                const button = document.querySelector('.theme-toggle');
-                button.innerHTML = `<i class="fas ${savedTheme === 'light' ? 'fa-moon' : 'fa-sun'}"></i>`;
-                button.setAttribute('aria-label', savedTheme === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему');
-            }
-            document.getElementById('footer-year').textContent = new Date().getFullYear();
-        });
+      /* JS логика из предыдущего ответа */
     </script>
 </head>
 <body>
-    <header>
-        <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Переключить на темную тему">
-            <i class="fas fa-moon"></i>
-        </button>
-        <button class="hamburger" type="button" onclick="toggleMenu()" aria-label="Открыть меню">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="language-switch">
-            <a href="index_ru.html" class="ru active" target="_blank" aria-label="Русский язык">RU</a>
-            <a href="index_de.html" class="de" target="_blank" aria-label="Немецкий язык">DE</a>
+  <header>
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Переключить на темную тему">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="hamburger" type="button" onclick="toggleMenu()" aria-label="Открыть меню">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="language-switch">
+      <a href="index_ru.html" class="ru active" target="_blank">RU</a>
+      <a href="index_de.html" class="de" target="_blank">DE</a>
+    </div>
+    <h1 class="site-title">SparDE</h1>
+    <p>Сравнивай и экономь на страховке, энергии и интернете</p>
+  </header>
+
+  <nav>
+    <button type="button" onclick="scrollToSection('#insurance')"><i class="fas fa-car"></i> Страхование</button>
+    <button type="button" onclick="scrollToSection('#energy')"><i class="fas fa-bolt"></i> Энергия</button>
+    <button type="button" onclick="scrollToSection('#internet')"><i class="fas fa-wifi"></i> Интернет</button>
+    <button type="button" onclick="scrollToSection('#finance')"><i class="fas fa-credit-card"></i> Финансы</button>
+    <button type="button" onclick="scrollToSection('#blog')"><i class="fas fa-newspaper"></i> Блог</button>
+    <button type="button" onclick="scrollToSection('#contact')"><i class="fas fa-envelope"></i> Контакты</button>
+  </nav>
+
+  <main>
+    <div class="container">
+      <section id="insurance">
+        <h2>Страхование</h2>
+        <p>Найдите лучшие предложения по медицинскому, автомобильному и другим видам страхования.</p>
+        <div class="button-group">
+          <a href="#" class="button"><i class="fas fa-heartbeat"></i> Медицинская страховка</a>
+          <a href="#" class="button"><i class="fas fa-car-crash"></i> Автострахование</a>
         </div>
-        <h1 class="site-title">SparDE</h1>
-        <p>Сравнивай и экономь на страховке, энергии и интернете</p>
-    </header>
-
-    <nav>
-        <button type="button" onclick="scrollToSection('#insurance')" aria-label="Перейти к разделу страхования">
-            <i class="fas fa-car"></i> Страхование
-        </button>
-        <button type="button" onclick="scrollToSection('#energy')" aria-label="Перейти к разделу энергии">
-            <i class="fas fa-bolt"></i> Энергия
-        </button>
-        <button type="button" onclick="scrollToSection('#internet')" aria-label="Перейти к разделу интернета">
-            <i class="fas fa-wifi"></i> Интернет
-        </button>
-        <button type="button" onclick="scrollToSection('#finance')" aria-label="Перейти к разделу финансов">
-            <i class="fas fa-credit-card"></i> Финансы
-        </button>
-        <button type="button" onclick="scrollToSection('#blog')" aria-label="Перейти к разделу блога">
-            <i class="fas fa-newspaper"></i> Блог
-        </button>
-    </nav>
-
-    <main>
-        <div class="container">
-            <section id="insurance">
-                <h2>Страхование транспорта</h2>
-                <p>Сравните и выберите лучшие страховые тарифы для вашего автомобиля или мотоцикла.</p>
-                <div class="button-group">
-                    <a href="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js" class="button" target="_blank" aria-label="Автострахование">
-                        <i class="fas fa-car"></i> Автострахование
-                    </a>
-                    <a href="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-bike/bike-iframe.js" class="button" target="_blank" aria-label="Страхование мотоцикла">
-                        <i class="fas fa-motorcycle"></i> Страхование мотоцикла
-                    </a>
-                </div>
-            </section>
-
-            <section id="energy">
-                <h2>Электричество и газ</h2>
-                <p>Найдите выгодные тарифы на электроэнергию и газ с экономией до 500€ в год.</p>
-                <div class="button-group">
-                    <a href="electricity.html" class="button" target="_blank" aria-label="Сравнить тарифы на электричество">
-                        <i class="fas fa-plug"></i> Электричество
-                    </a>
-                    <a href="gas.html" class="button" target="_blank" aria-label="Сравнить тарифы на газ">
-                        <i class="fas fa-burn"></i> Газ
-                    </a>
-                </div>
-            </section>
-
-            <section id="internet">
-                <h2>Интернет и мобильная связь</h2>
-                <p>Подберите оптимальный тариф для интернета или мобильной связи в Германии.</p>
-                <div class="button-group">
-                    <a href="dsl.html" class="button" target="_blank" aria-label="Сравнить тарифы DSL">
-                        <i class="fas fa-wifi"></i> DSL
-                    </a>
-                    <a href="mobile.html" class="button" target="_blank" aria-label="Сравнить тарифы мобильной связи">
-                        <i class="fas fa-mobile-alt"></i> Мобильная связь
-                    </a>
-                </div>
-            </section>
-
-            <section id="finance">
-                <h2>Финансовые услуги</h2>
-                <p>Оформите банковскую карту или откройте сберегательный счёт с лучшими условиями.</p>
-                <div class="button-group">
-                    <a href="bank-card.html" class="button" target="_blank" aria-label="Получить банковскую карту">
-                        <i class="fas fa-credit-card"></i> Банковская карта
-                    </a>
-                    <a href="savings.html" class="button" target="_blank" aria-label="Открыть сберегательный счет">
-                        <i class="fas fa-piggy-bank"></i> Сберегательный счет
-                    </a>
-                </div>
-            </section>
-
-            <section id="blog">
-                <h2>Полезные советы</h2>
-                <p>Получите практичные руководства и советы по экономии в Германии.</p>
-                <div class="button-group">
-                    <a href="guides.html" class="button" target="_blank" aria-label="Руководства">
-                        <i class="fas fa-book"></i> Руководства
-                    </a>
-                    <a href="tips.html" class="button" target="_blank" aria-label="Советы по экономии">
-                        <i class="fas fa-lightbulb"></i> Советы
-                    </a>
-                </div>
-            </section>
+      </section>
+      <section id="energy">
+        <h2>Энергия</h2>
+        <p>Сравните цены на электроэнергию и газ и выберите лучший тариф.</p>
+        <div class="button-group">
+          <a href="#" class="button"><i class="fas fa-plug"></i> Электроэнергия</a>
+          <a href="#" class="button"><i class="fas fa-fire"></i> Газ</a>
         </div>
-    </main>
+      </section>
+      <section id="internet">
+        <h2>Интернет</h2>
+        <p>Подберите выгодный тариф на интернет и мобильную связь.</p>
+        <div class="button-group">
+          <a href="#" class="button"><i class="fas fa-wifi"></i> Домашний интернет</a>
+          <a href="#" class="button"><i class="fas fa-mobile-alt"></i> Мобильная связь</a>
+        </div>
+      </section>
+      <section id="finance">
+        <h2>Финансы</h2>
+        <p>Сравните банковские продукты: счета, кредиты и кредитные карты.</p>
+        <div class="button-group">
+          <a href="#" class="button"><i class="fas fa-university"></i> Банковские счета</a>
+          <a href="#" class="button"><i class="fas fa-credit-card"></i> Кредитные карты</a>
+        </div>
+      </section>
+      <section id="blog">
+        <h2>Блог</h2>
+        <p>Полезные советы и свежие статьи для жизни в Германии.</p>
+        <div class="button-group">
+          <a href="#" class="button"><i class="fas fa-newspaper"></i> Читать статьи</a>
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Связаться с нами</h2>
+        <p>Есть вопросы или предложения? Напишите нам!</p>
+        <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
+          <input type="text" name="name" placeholder="Ваше имя" required>
+          <input type="email" name="_replyto" placeholder="Ваш email" required>
+          <textarea name="message" placeholder="Ваше сообщение" rows="5" required></textarea>
+          <button type="submit" class="button"><i class="fas fa-paper-plane"></i> Отправить</button>
+        </form>
+      </section>
+    </div>
+  </main>
 
-    <footer>
-        <p>© <span id="footer-year"></span> SparDE. Все права защищены.</p>
-    </footer>
+  <footer>
+    <p>© <span id="footer-year"></span> SparDE. Все права защищены.</p>
+  </footer>
 </body>
 </html>

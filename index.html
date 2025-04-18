@@ -27,7 +27,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -38,7 +38,7 @@
         }
 
         header {
-            background: url('https://images.unsplash.com/photo-1581091012184-5c8a3e86a3dc?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1581091012184-5c8a3e86a3dc?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat, #1a73e8;
             color: white;
             padding: 3rem 1rem 2rem;
             text-align: center;
@@ -69,16 +69,27 @@
         .language-switch a {
             font-weight: bold;
             font-size: 1rem;
-            color: white;
             text-decoration: none;
-            background-color: var(--accent-color);
             padding: 0.3rem 0.6rem;
             border-radius: 4px;
+            transition: transform 0.3s;
+        }
+
+        .language-switch a.ru {
+            background-color: white;
+            color: #003087; /* Синий (Россия) */
+            border: 2px solid #d52b1e; /* Красный (Россия) */
+        }
+
+        .language-switch a.de {
+            background-color: #000000; /* Черный (Германия) */
+            color: #ffce00; /* Желтый (Германия) */
+            border: 2px solid #dd0000; /* Красный (Германия) */
         }
 
         .language-switch a.active {
-            border: 2px solid white;
             text-decoration: underline;
+            transform: scale(1.1);
         }
 
         .theme-toggle {
@@ -131,7 +142,7 @@
         }
 
         .button:hover {
-            background-color: #155ab6;
+            background-color: color-mix(in srgb, var(--button-bg) 80%, black);
         }
 
         .container {
@@ -142,6 +153,18 @@
 
         section {
             margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        section h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        section .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         html {
@@ -153,6 +176,17 @@
             padding: 1rem;
             background-color: var(--alt-bg);
         }
+
+        @media (max-width: 600px) {
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
     </style>
     <script>
         function scrollToSection(id) {
@@ -161,23 +195,19 @@
 
         function loadInsurance(type) {
             const container = document.getElementById('insurance-container');
-            container.innerHTML = ''; // Clear previous content
-
+            container.innerHTML = '<p>Загрузка...</p>';
             const div = document.createElement('div');
             div.style.width = '100%';
-            div.id = 'tcpp-iframe-kfz';
+            div.id = `tcpp-iframe-${type}`;
             container.appendChild(div);
 
             const script = document.createElement('script');
-            script.src = `https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js`;
+            script.src = `https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-${type}/${type}-iframe.js`;
             script.async = true;
+            script.onerror = () => {
+                container.innerHTML = '<p>Ошибка загрузки виджета. Попробуйте позже.</p>';
+            };
             container.appendChild(script);
-
-            // Optionally, customize based on type (e.g., car or bike)
-            if (type === 'bike') {
-                // Add logic for bike insurance widget if available
-                console.log('Loading bike insurance widget...');
-            }
         }
 
         function toggleTheme() {
@@ -186,15 +216,19 @@
             const next = current === 'light' ? 'dark' : 'light';
             html.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
+            const icon = document.querySelector('.theme-toggle i');
+            icon.className = next === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            document.querySelector('.theme-toggle').innerHTML = `<i class="${icon.className}"></i> ${next === 'light' ? 'Темная тема' : 'Светлая тема'}`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
+                const icon = document.querySelector('.theme-toggle i');
+                icon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                document.querySelector('.theme-toggle').innerHTML = `<i class="${icon.className}"></i> ${savedTheme === 'light' ? 'Темная тема' : 'Светлая тема'}`;
             }
-
-            // Set dynamic year in footer
             document.getElementById('footer-year').textContent = new Date().getFullYear();
         });
     </script>
@@ -202,11 +236,11 @@
 <body>
     <header>
         <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Переключить тему">
-            <i class="fas fa-adjust"></i> Тема
+            <i class="fas fa-moon"></i> Темная тема
         </button>
         <div class="language-switch">
-            <a href="index_ru.html" class="active" aria-label="Русский язык">RU</a>
-            <a href="index_de.html" aria-label="Немецкий язык">DE</a>
+            <a href="index_ru.html" class="ru active" aria-label="Русский язык">RU</a>
+            <a href="index_de.html" class="de" aria-label="Немецкий язык">DE</a>
         </div>
         <h1 class="site-title">SparDE</h1>
         <p>Сравнивай и экономь на страховке, энергии и интернете</p>
@@ -234,40 +268,63 @@
         <div class="container">
             <section id="insurance">
                 <h2>Страхование транспорта</h2>
-                <button type="button" onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
-                <button type="button" onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
+                <div class="button-group">
+                    <button type="button" onclick="loadInsurance('car')" aria-label="Автострахование">
+                        <i class="fas fa-car"></i> Автострахование
+                    </button>
+                    <button type="button" onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">
+                        <i class="fas fa-motorcycle"></i> Страхование мотоцикла
+                    </button>
+                </div>
                 <div id="insurance-container"></div>
             </section>
 
             <section id="energy">
                 <h2>Электричество и газ</h2>
-                <p>Узнай, где самые выгодные тарифы.</p>
-                <a class="button" href="electricity.html">
-                    ⚡ Перейти к тарифам
-                </a>
+                <div class="button-group">
+                    <button type="button" onclick="window.location.href='electricity.html'" aria-label="Сравнить тарифы на электричество">
+                        <i class="fas fa-bolt"></i> Электричество
+                    </button>
+                    <button type="button" onclick="window.location.href='gas.html'" aria-label="Сравнить тарифы на газ">
+                        <i class="fas fa-fire"></i> Газ
+                    </button>
+                </div>
             </section>
 
             <section id="internet">
                 <h2>Интернет и мобильная связь</h2>
-                <p>Найди лучший тариф DSL или мобильной связи.</p>
-                <a class="button" href="mobile.html">📶 Все предложения</a>
-                <div style="display: flex; gap: 5px; justify-content: center;">
-                    <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
-                    <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
-                    <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
+                <div class="button-group">
+                    <button type="button" onclick="window.location.href='dsl.html'" aria-label="Сравнить тарифы DSL">
+                        <i class="fas fa-wifi"></i> DSL
+                    </button>
+                    <button type="button" onclick="window.location.href='mobile.html'" aria-label="Сравнить тарифы мобильной связи">
+                        <i class="fas fa-mobile-alt"></i> Мобильная связь
+                    </button>
                 </div>
             </section>
 
             <section id="finance">
-                <h2>Получить карту банка С24</h2>
-                <p>Оформите карту и получите выгодные условия.</p>
-                <a class="button" href="finance.html">💳 Подробнее</a>
+                <h2>Финансовые услуги</h2>
+                <div class="button-group">
+                    <button type="button" onclick="window.location.href='bank-card.html'" aria-label="Получить банковскую карту">
+                        <i class="fas fa-credit-card"></i> Банковская карта
+                    </button>
+                    <button type="button" onclick="window.location.href='savings.html'" aria-label="Открыть сберегательный счет">
+                        <i class="fas fa-piggy-bank"></i> Сберегательный счет
+                    </button>
+                </div>
             </section>
 
             <section id="blog">
                 <h2>Полезные советы</h2>
-                <p>Руководства по переезду, регистрации, экономии.</p>
-                <a href="blog.html" class="button">📰 Перейти в блог</a>
+                <div class="button-group">
+                    <button type="button" onclick="window.location.href='guides.html'" aria-label="Руководства">
+                        <i class="fas fa-book"></i> Руководства
+                    </button>
+                    <button type="button" onclick="window.location.href='tips.html'" aria-label="Советы по экономии">
+                        <i class="fas fa-lightbulb"></i> Советы
+                    </button>
+                </div>
             </section>
         </div>
     </main>

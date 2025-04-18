@@ -212,50 +212,70 @@
   </nav>
 
   <main>
-    <div class="container">
-      <section id="insurance">
-        <h2>Страхование транспорта</h2>
-        <button onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
-        <button onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
-        <div id="insurance-container"></div>
-      </section>
+  <div class="container">
+    <section id="insurance">
+      <h2>Страхование транспорта</h2>
+      <button class="button" onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
+      <button class="button" onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
+      <div id="insurance-container"></div>
+    </section>
 
-      <section id="energy">
-        <h2>Электричество и газ</h2>
-        <p>Узнай, где самые выгодные тарифы.</p>
-        <a class="button" href="electricity.html">
-          ⚡ Перейти к тарифам
-        </a>
-      </section>
+    <section id="energy">
+      <h2>Электричество и газ</h2>
+      <button class="button" onclick="location.href='electricity.html'">⚡ Смотреть тарифы</button>
+    </section>
 
-      <section id="internet">
-        <h2>Интернет и мобильная связь</h2>
-        <p>Найди лучший тариф DSL или мобильной связи.</p>
-        <a class="button" href="mobile.html">📶 Все предложения</a>
-        <div style="display: flex; gap: 5px; justify-content: center;">
-          <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
-          <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
-          <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
-        </div>
-      </section>
+    <section id="internet">
+      <h2>Интернет и мобильная связь</h2>
+      <button class="button" onclick="location.href='mobile.html'">📶 Все предложения</button>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 1rem;">
+        <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
+        <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
+        <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
+      </div>
+    </section>
 
-      <section id="finance">
-        <h2>Получить карту банка С24</h2>
-        <p>Оформите карту и получите выгодные условия.</p>
-        <a class="button" href="finance.html">💳 Подробнее</a>
-      </section>
+    <section id="finance">
+      <h2>Банковская карта С24</h2>
+      <button class="button" onclick="location.href='finance.html'">💳 Подробнее</button>
+    </section>
 
-      <section id="blog">
-        <h2>Полезные советы</h2>
-        <p>Руководства по переезду, регистрации, экономии.</p>
-        <a href="blog.html" class="button">📰 Перейти в блог</a>
-      </section>
-    </div>
-  </main>
+    <section id="blog">
+      <h2>Полезные советы</h2>
+      <button class="button" onclick="location.href='blog.html'">📰 Перейти в блог</button>
+    </section>
+  </div>
+</main>
 
-  <footer>
-    <p>&copy; 2025 SparDE. Все права защищены.</p>
-  </footer>
+<style>
+  .button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: background-color 0.3s, transform 0.2s;
+  }
 
-</body>
-</html>
+  .button:hover {
+    background-color: #155ab6;
+    transform: scale(1.03);
+  }
+
+  @media (max-width: 600px) {
+    .button {
+      font-size: 1rem;
+      padding: 1rem 1.5rem;
+    }
+  }
+</style>
+
+
+  

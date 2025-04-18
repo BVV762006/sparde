@@ -173,10 +173,6 @@
             transition: background-color 0.3s;
         }
 
-        .button i {
-            font-size: 0.9rem;
-        }
-
         .button:hover {
             background-color: color-mix(in srgb, var(--button-bg) 80%, black);
         }
@@ -261,25 +257,6 @@
             }
         }
 
-        function loadInsurance(type) {
-            const container = document.getElementById('insurance-container');
-            container.innerHTML = '<p>Загрузка...</p>';
-            const div = document.createElement('div');
-            div.style.width = '100%';
-            div.id = type === 'car' ? 'tcpp-iframe-kfz' : 'tcpp-iframe-bike';
-            container.appendChild(div);
-
-            const script = document.createElement('script');
-            script.src = type === 'car' 
-                ? 'https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js'
-                : 'https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-bike/bike-iframe.js';
-            script.async = true;
-            script.onerror = () => {
-                container.innerHTML = '<p>Ошибка загрузки виджета. Попробуйте позже.</p>';
-            };
-            container.appendChild(script);
-        }
-
         function toggleTheme() {
             const html = document.documentElement;
             const current = html.getAttribute('data-theme');
@@ -321,8 +298,8 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="language-switch">
-            <a href="index_ru.html" class="ru active" aria-label="Русский язык">RU</a>
-            <a href="index_de.html" class="de" aria-label="Немецкий язык">DE</a>
+            <a href="index_ru.html" class="ru active" target="_blank" aria-label="Русский язык">RU</a>
+            <a href="index_de.html" class="de" target="_blank" aria-label="Немецкий язык">DE</a>
         </div>
         <h1 class="site-title">SparDE</h1>
         <p>Сравнивай и экономь на страховке, энергии и интернете</p>
@@ -346,4 +323,77 @@
         </button>
     </nav>
 
-    <
+    <main>
+        <div class="container">
+            <section id="insurance">
+                <h2>Страхование транспорта</h2>
+                <p>Сравните и выберите лучшие страховые тарифы для вашего автомобиля или мотоцикла.</p>
+                <div class="button-group">
+                    <a href="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js" class="button" target="_blank" aria-label="Автострахование">
+                        <i class="fas fa-car"></i> Автострахование
+                    </a>
+                    <a href="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-bike/bike-iframe.js" class="button" target="_blank" aria-label="Страхование мотоцикла">
+                        <i class="fas fa-motorcycle"></i> Страхование мотоцикла
+                    </a>
+                </div>
+            </section>
+
+            <section id="energy">
+                <h2>Электричество и газ</h2>
+                <p>Найдите выгодные тарифы на электроэнергию и газ с экономией до 500€ в год.</p>
+                <div class="button-group">
+                    <a href="electricity.html" class="button" target="_blank" aria-label="Сравнить тарифы на электричество">
+                        <i class="fas fa-plug"></i> Электричество
+                    </a>
+                    <a href="gas.html" class="button" target="_blank" aria-label="Сравнить тарифы на газ">
+                        <i class="fas fa-burn"></i> Газ
+                    </a>
+                </div>
+            </section>
+
+            <section id="internet">
+                <h2>Интернет и мобильная связь</h2>
+                <p>Подберите оптимальный тариф для интернета или мобильной связи в Германии.</p>
+                <div class="button-group">
+                    <a href="dsl.html" class="button" target="_blank" aria-label="Сравнить тарифы DSL">
+                        <i class="fas fa-wifi"></i> DSL
+                    </a>
+                    <a href="mobile.html" class="button" target="_blank" aria-label="Сравнить тарифы мобильной связи">
+                        <i class="fas fa-mobile-alt"></i> Мобильная связь
+                    </a>
+                </div>
+            </section>
+
+            <section id="finance">
+                <h2>Финансовые услуги</h2>
+                <p>Оформите банковскую карту или откройте сберегательный счёт с лучшими условиями.</p>
+                <div class="button-group">
+                    <a href="bank-card.html" class="button" target="_blank" aria-label="Получить банковскую карту">
+                        <i class="fas fa-credit-card"></i> Банковская карта
+                    </a>
+                    <a href="savings.html" class="button" target="_blank" aria-label="Открыть сберегательный счет">
+                        <i class="fas fa-piggy-bank"></i> Сберегательный счет
+                    </a>
+                </div>
+            </section>
+
+            <section id="blog">
+                <h2>Полезные советы</h2>
+                <p>Получите практичные руководства и советы по экономии в Германии.</p>
+                <div class="button-group">
+                    <a href="guides.html" class="button" target="_blank" aria-label="Руководства">
+                        <i class="fas fa-book"></i> Руководства
+                    </a>
+                    <a href="tips.html" class="button" target="_blank" aria-label="Советы по экономии">
+                        <i class="fas fa-lightbulb"></i> Советы
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© <span id="footer-year"></span> SparDE. Все права защищены.</p>
+    </footer>
+</body>
+</html>

@@ -1,262 +1,65 @@
-<!DOCTYPE html>
-<html lang="ru" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparDE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        :root {
-            --main-color: #1a73e8;
-            --accent-color: #fbbc05;
-            --bg-color: #ffffff;
-            --text-color: #111111;
-            --alt-bg: #f0f0f0;
-            --button-bg: #1a73e8;
-            --button-text: white;
-        }
+<main>
+  <div class="container">
+    <section id="insurance">
+      <h2>Страхование транспорта</h2>
+      <button class="button" onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
+      <button class="button" onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
+      <div id="insurance-container"></div>
+    </section>
 
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #f0f0f0;
-            --alt-bg: #1e1e1e;
-            --button-bg: #333;
-            --button-text: #fff;
-        }
+    <section id="energy">
+      <h2>Электричество и газ</h2>
+      <button class="button" onclick="location.href='electricity.html'">⚡ Смотреть тарифы</button>
+    </section>
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            font-size: 18px;
-            line-height: 1.6;
-            transition: background-color 0.4s, color 0.4s;
-        }
+    <section id="internet">
+      <h2>Интернет и мобильная связь</h2>
+      <button class="button" onclick="location.href='mobile.html'">📶 Все предложения</button>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 1rem;">
+        <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
+        <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
+        <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
+      </div>
+    </section>
 
-        header {
-            background: url('https://images.unsplash.com/photo-1581091012184-5c8a3e86a3dc?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-            color: white;
-            padding: 3rem 1rem 2rem;
-            text-align: center;
-            position: relative;
-        }
+    <section id="finance">
+      <h2>Банковская карта С24</h2>
+      <button class="button" onclick="location.href='finance.html'">💳 Подробнее</button>
+    </section>
 
-        .site-title {
-            font-size: 3rem;
-            font-weight: bold;
-            animation: pulse 2s ease-in-out infinite;
-            margin: 0.5rem 0 0.2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
+    <section id="blog">
+      <h2>Полезные советы</h2>
+      <button class="button" onclick="location.href='blog.html'">📰 Перейти в блог</button>
+    </section>
+  </div>
+</main>
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.08); opacity: 0.85; }
-        }
+<style>
+  .button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: background-color 0.3s, transform 0.2s;
+  }
 
-        .language-switch {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-        }
+  .button:hover {
+    background-color: #155ab6;
+    transform: scale(1.03);
+  }
 
-        .language-switch a {
-            font-weight: bold;
-            font-size: 1rem;
-            color: white;
-            text-decoration: none;
-            background-color: var(--accent-color);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        .language-switch a.active {
-            border: 2px solid white;
-            text-decoration: underline;
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background-color: var(--accent-color);
-            border: none;
-            border-radius: 4px;
-            color: #111;
-            padding: 0.3rem 0.6rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 1rem;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.05);
-        }
-
-        nav {
-            background-color: var(--alt-bg);
-            padding: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .button {
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: background-color 0.3s;
-        }
-
-        .button i {
-            font-size: 1.2rem;
-        }
-
-        .button:hover {
-            background-color: #155ab6;
-        }
-
-        .container {
-            padding: 2rem;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: var(--alt-bg);
-        }
-    </style>
-    <script>
-        function scrollToSection(id) {
-            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function loadInsurance(type) {
-            let container = document.getElementById("insurance-container");
-            container.innerHTML = `<div style="width: 100%" id="tcpp-iframe-kfz"></div>
-                <script src="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js"></` + `script>`;
-        }
-
-        function toggleTheme() {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
-            const next = current === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            }
-        });
-    </script>
-</head>
-<body>
-
-<header>
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-adjust"></i> Тема
-    </button>
-    <div class="language-switch">
-        <a href="#" class="active">RU</a>
-        <a href="index_de.html">DE</a>
-    </div>
-    <h1 class="site-title">SparDE</h1>
-    <p>Сравнивай и экономь на страховке, энергии и интернете</p>
-</header>
-
-  <nav>
-    <button onclick="scrollToSection('#insurance')">
-      <img src="https://img.icons8.com/ios-filled/50/car.png" alt="car" class="icon"/> Страхование
-    </button>
-    <button onclick="scrollToSection('#energy')">
-      <img src="https://img.icons8.com/ios-filled/50/lightning-bolt.png" alt="energy" class="icon"/> Энергия
-    </button>
-    <button onclick="scrollToSection('#internet')">
-      <img src="https://img.icons8.com/ios-filled/50/wifi.png" alt="internet" class="icon"/> Интернет
-    </button>
-    <button onclick="scrollToSection('#finance')">
-      <img src="https://img.icons8.com/ios-filled/50/card-in-use.png" alt="finance" class="icon"/> Финансы
-    </button>
-    <button onclick="scrollToSection('#blog')">
-      <img src="https://img.icons8.com/ios-filled/50/news.png" alt="blog" class="icon"/> Блог
-    </button>
-  </nav>
-
-  <main>
-    <div class="container">
-      <section id="insurance">
-        <h2>Страхование транспорта</h2>
-        <button onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
-        <button onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
-        <div id="insurance-container"></div>
-      </section>
-
-      <section id="energy">
-        <h2>Электричество и газ</h2>
-        <p>Узнай, где самые выгодные тарифы.</p>
-        <a class="button" href="electricity.html">
-          ⚡ Перейти к тарифам
-        </a>
-      </section>
-
-      <section id="internet">
-        <h2>Интернет и мобильная связь</h2>
-        <p>Найди лучший тариф DSL или мобильной связи.</p>
-        <a class="button" href="mobile.html">📶 Все предложения</a>
-        <div style="display: flex; gap: 5px; justify-content: center;">
-          <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
-          <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
-          <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
-        </div>
-      </section>
-
-      <section id="finance">
-        <h2>Получить карту банка С24</h2>
-        <p>Оформите карту и получите выгодные условия.</p>
-        <a class="button" href="finance.html">💳 Подробнее</a>
-      </section>
-
-      <section id="blog">
-        <h2>Полезные советы</h2>
-        <p>Руководства по переезду, регистрации, экономии.</p>
-        <a href="blog.html" class="button">📰 Перейти в блог</a>
-      </section>
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 SparDE. Все права защищены.</p>
-  </footer>
-
-</body>
-</html>
-  
+  @media (max-width: 600px) {
+    .button {
+      font-size: 1rem;
+      padding: 1rem 1.5rem;
+    }
+  }
+</style>

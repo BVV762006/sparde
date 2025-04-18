@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SparDE - сравнивайте и экономьте на страховке, энергии и интернете в Германии.">
+    <meta name="keywords" content="страхование, энергия, интернет, финансы, Германия, SparDE">
     <title>SparDE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERet7yg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --main-color: #1a73e8;
@@ -158,9 +160,24 @@
         }
 
         function loadInsurance(type) {
-            let container = document.getElementById("insurance-container");
-            container.innerHTML = <div style="width: 100%" id="tcpp-iframe-kfz"></div>
-                <script src="https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js"></ + script>;
+            const container = document.getElementById('insurance-container');
+            container.innerHTML = ''; // Clear previous content
+
+            const div = document.createElement('div');
+            div.style.width = '100%';
+            div.id = 'tcpp-iframe-kfz';
+            container.appendChild(div);
+
+            const script = document.createElement('script');
+            script.src = `https://form.partner-versicherung.de/widgets/189292/tcpp-iframe-kfz/kfz-iframe.js`;
+            script.async = true;
+            container.appendChild(script);
+
+            // Optionally, customize based on type (e.g., car or bike)
+            if (type === 'bike') {
+                // Add logic for bike insurance widget if available
+                console.log('Loading bike insurance widget...');
+            }
         }
 
         function toggleTheme() {
@@ -171,111 +188,92 @@
             localStorage.setItem('theme', next);
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
             }
+
+            // Set dynamic year in footer
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
         });
     </script>
 </head>
 <body>
+    <header>
+        <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Переключить тему">
+            <i class="fas fa-adjust"></i> Тема
+        </button>
+        <div class="language-switch">
+            <a href="index_ru.html" class="active" aria-label="Русский язык">RU</a>
+            <a href="index_de.html" aria-label="Немецкий язык">DE</a>
+        </div>
+        <h1 class="site-title">SparDE</h1>
+        <p>Сравнивай и экономь на страховке, энергии и интернете</p>
+    </header>
 
-<header>
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-adjust"></i> Тема
-    </button>
-    <div class="language-switch">
-        <a href="#" class="active">RU</a>
-        <a href="index_de.html">DE</a>
-    </div>
-    <h1 class="site-title">SparDE</h1>
-    <p>Сравнивай и экономь на страховке, энергии и интернете</p>
-</header>
+    <nav>
+        <button type="button" onclick="scrollToSection('#insurance')" aria-label="Перейти к разделу страхования">
+            <i class="fas fa-car"></i> Страхование
+        </button>
+        <button type="button" onclick="scrollToSection('#energy')" aria-label="Перейти к разделу энергии">
+            <i class="fas fa-bolt"></i> Энергия
+        </button>
+        <button type="button" onclick="scrollToSection('#internet')" aria-label="Перейти к разделу интернета">
+            <i class="fas fa-wifi"></i> Интернет
+        </button>
+        <button type="button" onclick="scrollToSection('#finance')" aria-label="Перейти к разделу финансов">
+            <i class="fas fa-credit-card"></i> Финансы
+        </button>
+        <button type="button" onclick="scrollToSection('#blog')" aria-label="Перейти к разделу блога">
+            <i class="fas fa-newspaper"></i> Блог
+        </button>
+    </nav>
 
-  <nav>
-    <button onclick="scrollToSection('#insurance')">
-      <img src="https://img.icons8.com/ios-filled/50/car.png" alt="car" class="icon"/> Страхование
-    </button>
-    <button onclick="scrollToSection('#energy')">
-      <img src="https://img.icons8.com/ios-filled/50/lightning-bolt.png" alt="energy" class="icon"/> Энергия
-    </button>
-    <button onclick="scrollToSection('#internet')">
-      <img src="https://img.icons8.com/ios-filled/50/wifi.png" alt="internet" class="icon"/> Интернет
-    </button>
-    <button onclick="scrollToSection('#finance')">
-      <img src="https://img.icons8.com/ios-filled/50/card-in-use.png" alt="finance" class="icon"/> Финансы
-    </button>
-    <button onclick="scrollToSection('#blog')">
-      <img src="https://img.icons8.com/ios-filled/50/news.png" alt="blog" class="icon"/> Блог
-    </button>
-  </nav>
+    <main>
+        <div class="container">
+            <section id="insurance">
+                <h2>Страхование транспорта</h2>
+                <button type="button" onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
+                <button type="button" onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
+                <div id="insurance-container"></div>
+            </section>
 
-  <main>
-  <div class="container">
-    <section id="insurance">
-      <h2>Страхование транспорта</h2>
-      <button class="button" onclick="loadInsurance('car')" aria-label="Автострахование">🚗 Автострахование</button>
-      <button class="button" onclick="loadInsurance('bike')" aria-label="Страхование мотоцикла">🏍️ Страхование мотоцикла</button>
-      <div id="insurance-container"></div>
-    </section>
+            <section id="energy">
+                <h2>Электричество и газ</h2>
+                <p>Узнай, где самые выгодные тарифы.</p>
+                <a class="button" href="electricity.html">
+                    ⚡ Перейти к тарифам
+                </a>
+            </section>
 
-    <section id="energy">
-      <h2>Электричество и газ</h2>
-      <button class="button" onclick="location.href='electricity.html'">⚡ Смотреть тарифы</button>
-    </section>
+            <section id="internet">
+                <h2>Интернет и мобильная связь</h2>
+                <p>Найди лучший тариф DSL или мобильной связи.</p>
+                <a class="button" href="mobile.html">📶 Все предложения</a>
+                <div style="display: flex; gap: 5px; justify-content: center;">
+                    <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
+                    <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
+                    <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
+                </div>
+            </section>
 
-    <section id="internet">
-      <h2>Интернет и мобильная связь</h2>
-      <button class="button" onclick="location.href='mobile.html'">📶 Все предложения</button>
-      <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 1rem;">
-        <a class="button" href="https://h.sim24.de/23427b1382546?kwk=aTmNxSomgFmFXQuKnYkMiQ%3D%3D" target="_blank">SIM24.DE</a>
-        <a class="button" href="https://aklam.io/d9gDjq" target="_blank">LEBARA</a>
-        <a class="button" href="https://www.sim.de/freundschaftsangebot?kw=OP0rb%2F3uKO2tbt2MGrYWnw%3D%3D" target="_blank">SIM.DE</a>
-      </div>
-    </section>
+            <section id="finance">
+                <h2>Получить карту банка С24</h2>
+                <p>Оформите карту и получите выгодные условия.</p>
+                <a class="button" href="finance.html">💳 Подробнее</a>
+            </section>
 
-    <section id="finance">
-      <h2>Банковская карта С24</h2>
-      <button class="button" onclick="location.href='finance.html'">💳 Подробнее</button>
-    </section>
+            <section id="blog">
+                <h2>Полезные советы</h2>
+                <p>Руководства по переезду, регистрации, экономии.</p>
+                <a href="blog.html" class="button">📰 Перейти в блог</a>
+            </section>
+        </div>
+    </main>
 
-    <section id="blog">
-      <h2>Полезные советы</h2>
-      <button class="button" onclick="location.href='blog.html'">📰 Перейти в блог</button>
-    </section>
-  </div>
-</main>
-
-<style>
-  .button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    padding: 1.2rem 2.5rem;
-    border-radius: 12px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-
-  .button:hover {
-    background-color: #155ab6;
-    transform: scale(1.03);
-  }
-
-  @media (max-width: 600px) {
-    .button {
-      font-size: 1rem;
-      padding: 1rem 1.5rem;
-    }
-  }
-</style>
-
-
-  
+    <footer>
+        <p>© <span id="footer-year"></span> SparDE. Все права защищены.</p>
+    </footer>
+</body>
+</html>

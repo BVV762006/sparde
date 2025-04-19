@@ -151,16 +151,28 @@
   </div>
 </section>
 
-
-   <section id="blog">
-  <h2>Полезные советы</h2>
+<section id="blog">
+  <h2>Полезные советы и инструкции</h2>
   <p>Руководства по переезду, регистрации, экономии.</p>
-  <a href="#">Читать блог</a>
-  <h3>Инструкции</h3>
-  <p>Здесь вы найдете пошаговые инструкции по различным вопросам, от переезда до управления личными финансами.</p>
-  <a href="instructions.html" target="_blank">Перейти к инструкции</a>
+  <a href="#" id="blog-link">Читать</a>
+  <ul id="blog-links" style="display: none;">
+    <li><a href="#">Получить услугу бесплатно и что я получу, ели воспользуюсь услугой</a></li>
+    <li><a href="#">Как экономить на электроэнергии до 300 Евро в год</a></li>
+    <li><a href="#">Новые банки в Германии. Бесплатные счета и моментальные денежные переводы</a></li>
+    <li><a href="#">Мобильная связь без ограничений</a></li>
+    <li><a href="#">Автострахование на новых условиях. Как платить меньше</a></li>
+  </ul>
 </section>
 
+<script>
+  document.getElementById('blog-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    var blogLinks = document.getElementById('blog-links');
+    blogLinks.style.display = blogLinks.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+
+   
   <footer>
     <p>&copy; 2025 Sparde. Все права защищены.</p>
   </footer>

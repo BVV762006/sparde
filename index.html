@@ -151,18 +151,43 @@
   </div>
 </section>
   
- <section id="blog">
-  <h2>Полезные советы и инструкции</h2>
-  <p>Руководства по переезду, регистрации, экономии.</p>
-  <a href="#" id="blog-link">Читать</a>
-  <ul id="blog-links" style="display: none;">
-    <li><a href="free-service.html" target="_blank">Получить услугу бесплатно и что я получу, ели воспользуюсь услугой</a></li>
-    <li><a href="energy-saving.html" target="_blank">Как экономить на электроэнергии до 300 Евро в год</a></li>
-    <li><a href="new-banks.html" target="_blank" id="new-banks-link">Новые банки Германии: бесплатные счета и быстрые переводы</a></li>
-    <li><a href="mobile-plan.html" target="_blank">Мобильная связь без ограничений</a></li>
-    <li><a href="car-insurance.html" target="_blank">Автострахование на новых условиях. Как платить меньше</a></li>
-  </ul>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полезные советы и инструкции</title>
+    <style>
+        #blog-links {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<section id="blog">
+    <h2>Полезные советы и инструкции</h2>
+    <p>Руководства по переезду, регистрации, экономии и другим важным вопросам.</p>
+    <a href="#" id="blog-link">Читать подробнее</a>
+    <ul id="blog-links">
+        <li><a href="free-service.html" target="_blank">Как получить услугу бесплатно и что она включает</a></li>
+        <li><a href="energy-saving.html" target="_blank">Экономия электроэнергии: до 300 евро в год</a></li>
+        <li><a href="new-banks.html" target="_blank" id="new-banks-link">Новые банки Германии: бесплатные счета и быстрые переводы</a></li>
+        <li><a href="mobile-plan.html" target="_blank">Безлимитная мобильная связь: лучшие тарифы</a></li>
+        <li><a href="car-insurance.html" target="_blank">Автострахование на новых условиях: как платить меньше</a></li>
+    </ul>
 </section>
+
+<script>
+document.getElementById("blog-link").addEventListener("click", function(event) {
+    event.preventDefault(); // Отключаем переход по ссылке
+    var linksList = document.getElementById("blog-links");
+    linksList.style.display = (linksList.style.display === "none" || linksList.style.display === "") ? "block" : "none";
+});
+</script>
+
+</body>
+</html>
 
   <footer>
     <p>&copy; 2025 Sparde. Все права защищены.</p>

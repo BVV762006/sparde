@@ -158,10 +158,16 @@
   <ul id="blog-links" style="display: none;">
     <li><a href="#">Получить услугу бесплатно и что я получу, ели воспользуюсь услугой</a></li>
     <li><a href="#">Как экономить на электроэнергии до 300 Евро в год</a></li>
-    <li><a href="#">Новые банки в Германии. Бесплатные счета и моментальные денежные переводы</a></li>
+    <li><a href="#" id="new-banks-link">Новые банки в Германии. Бесплатные счета и моментальные денежные переводы</a></li>
     <li><a href="#">Мобильная связь без ограничений</a></li>
     <li><a href="#">Автострахование на новых условиях. Как платить меньше</a></li>
   </ul>
+  
+  <div id="new-banks-article" style="display: none;">
+    <h3>Новые банки в Германии. Бесплатные счета и моментальные денежные переводы</h3>
+    <p>В последние годы в Германии появилось несколько новых банков, которые предлагают бесплатные счета и моментальные денежные переводы. Эти банки работают в основном через мобильные приложения, предоставляя удобный интерфейс для управления финансами и оплатами. Рассмотрим подробнее.</p>
+    <p>...</p>
+  </div>
 </section>
 
 <script>
@@ -170,7 +176,14 @@
     var blogLinks = document.getElementById('blog-links');
     blogLinks.style.display = blogLinks.style.display === 'none' ? 'block' : 'none';
   });
+
+  document.getElementById('new-banks-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    var article = document.getElementById('new-banks-article');
+    article.style.display = article.style.display === 'none' ? 'block' : 'none';
+  });
 </script>
+
 
    
   <footer>

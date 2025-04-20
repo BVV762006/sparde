@@ -1,6 +1,3 @@
-Вы сказали:
-
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -82,12 +79,46 @@
       font-weight: bold;
     }
 
+    .button-group a,
+    .bank-button {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--main-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-group a:hover,
+    .bank-button:hover {
+      background-color: #0c5bd3;
+    }
+
+    .bank-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .bank-button img {
+      height: 24px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
     footer {
       background-color: var(--alt-bg);
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
       color: #555;
+    }
+
+    #blog-links {
+      display: none;
     }
   </style>
 </head>
@@ -108,6 +139,7 @@
     <a href="#insurance">Страхование</a>
     <a href="#energy">Энергия</a>
     <a href="#internet">Интернет</a>
+    <a href="#mobile">Мобильная связь</a>
     <a href="#finance">Финансы</a>
     <a href="#blog">Блог</a>
   </nav>
@@ -118,81 +150,71 @@
       <p>Сравни предложения от ведущих страховых компаний. <a href="auto-insurance.html" target="_blank">Перейти к сравнениям</a></p>
     </section>
 
-   <section id="energy">
-    <h2>Электроэнергия</h2>
-    <p>Найдите выгодные тарифы на электроэнергию с экономией до 300€ в год.</p>
-    <div class="button-group">
-        <a href="electricity.html" class="button" target="_blank" aria-label="Сравнить тарифы на электричество">
-            <i class="fas fa-plug"></i> Электричество
+    <section id="energy">
+      <h2>Электроэнергия</h2>
+      <p>Найдите выгодные тарифы на электроэнергию с экономией до 300€ в год.</p>
+      <div class="button-group">
+        <a href="electricity.html" target="_blank" aria-label="Сравнить тарифы на электричество">
+          ⚡ Электричество
         </a>
-    </div>
-</section>
+      </div>
+    </section>
 
-   <section id="mobile">
-  <h2>Мобильные тарифы</h2>
-  <p>Подбери лучший тариф под себя.</p>
-  <a href="mobile.html" target="_blank">Сравнить тарифы</a>
-</section>
+    <section id="internet">
+      <h2>Интернет</h2>
+      <p>Сравнивай провайдеров и выбирай лучшие предложения.</p>
+      <a href="internet.html" class="button-group" target="_blank">Выбрать интернет</a>
+    </section>
+
+    <section id="mobile">
+      <h2>Мобильные тарифы</h2>
+      <p>Подбери лучший тариф под себя.</p>
+      <a href="mobile.html" target="_blank">Сравнить тарифы</a>
+    </section>
 
     <section id="finance">
-  <h2>Финансы и кредиты</h2>
-  <p>Подобрать выгодный кредит или открыть счёт в банке:</p>
-  <div class="bank-buttons">
-    <a href="https://s.c24.de/dpJOCkWg5J/" target="_blank" class="bank-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/C24_Bank_Logo.svg" alt="C24" />
-      C24 Bank
-    </a>
-    <a href="https://revolut.com/referral/?referral-code=vladimcfu6!APR2-25-AR" target="_blank" class="bank-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Revolut_logo.svg/2560px-Revolut_logo.svg.png" alt="Revolut" />
-      Revolut
-    </a>
-    <a href="https://n26.com/r/vladimib3730" target="_blank" class="bank-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/N26_Logo_2021.svg" alt="N26" />
-      N26 Bank
-    </a>
-  </div>
-</section>
-  
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Полезные советы и инструкции</title>
-    <style>
-        #blog-links {
-            display: none;
-        }
-    </style>
-</head>
-<body>
+      <h2>Финансы и кредиты</h2>
+      <p>Подобрать выгодный кредит или открыть счёт в банке:</p>
+      <div class="bank-buttons">
+        <a href="https://s.c24.de/dpJOCkWg5J/" target="_blank" class="bank-button">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/C24_Bank_Logo.svg" alt="C24" />
+          C24 Bank
+        </a>
+        <a href="https://revolut.com/referral/?referral-code=vladimcfu6!APR2-25-AR" target="_blank" class="bank-button">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Revolut_logo.svg/2560px-Revolut_logo.svg.png" alt="Revolut" />
+          Revolut
+        </a>
+        <a href="https://n26.com/r/vladimib3730" target="_blank" class="bank-button">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/N26_Logo_2021.svg" alt="N26" />
+          N26 Bank
+        </a>
+      </div>
+    </section>
 
-<section id="blog">
-    <h2>Полезные советы и инструкции</h2>
-    <p>Руководства по переезду, регистрации, экономии и другим важным вопросам.</p>
-    <a href="#" id="blog-link">Читать подробнее</a>
-    <ul id="blog-links">
+    <section id="blog">
+      <h2>Полезные советы и инструкции</h2>
+      <p>Руководства по переезду, регистрации, экономии и другим важным вопросам.</p>
+      <a href="#" id="blog-link">Читать подробнее</a>
+      <ul id="blog-links">
         <li><a href="free-service.html" target="_blank">Как получить услугу бесплатно и что она включает</a></li>
         <li><a href="energy-saving.html" target="_blank">Экономия электроэнергии: до 300 евро в год</a></li>
-        <li><a href="new-banks.html" target="_blank" id="new-banks-link">Новые банки Германии: бесплатные счета и быстрые переводы</a></li>
+        <li><a href="new-banks.html" target="_blank">Новые банки Германии: бесплатные счета и быстрые переводы</a></li>
         <li><a href="mobile-plan.html" target="_blank">Безлимитная мобильная связь: лучшие тарифы</a></li>
         <li><a href="car-insurance.html" target="_blank">Автострахование на новых условиях: как платить меньше</a></li>
-    </ul>
-</section>
-
-<script>
-document.getElementById("blog-link").addEventListener("click", function(event) {
-    event.preventDefault(); // Отключаем переход по ссылке
-    var linksList = document.getElementById("blog-links");
-    linksList.style.display = (linksList.style.display === "none" || linksList.style.display === "") ? "block" : "none";
-});
-</script>
-
-</body>
-</html>
+      </ul>
+    </section>
+  </main>
 
   <footer>
     <p>&copy; 2025 Sparde. Все права защищены.</p>
   </footer>
+
+  <script>
+    document.getElementById("blog-link").addEventListener("click", function(event) {
+      event.preventDefault();
+      var linksList = document.getElementById("blog-links");
+      linksList.style.display = (linksList.style.display === "none" || linksList.style.display === "") ? "block" : "none";
+    });
+  </script>
 </body>
 </html>

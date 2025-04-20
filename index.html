@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sparde</title>
+  <title>SparDE</title>
   <style>
     :root {
       --main-color: #1a73e8;
@@ -29,9 +29,53 @@
       position: relative;
     }
 
-    header h1 {
-      margin: 0;
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .header-logo {
+      height: 40px;
+      width: 40px;
+    }
+
+    .header-title {
       font-size: 2rem;
+      margin: 0;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+      letter-spacing: 1px;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+      }
+      50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      }
+      100% {
+        transform: scale(1);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+      }
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .language-switch a {
+      margin-left: 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     nav {
@@ -64,19 +108,6 @@
       margin-bottom: 2rem;
       border-bottom: 1px solid #ddd;
       padding-bottom: 1rem;
-    }
-
-    .language-switch {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-    }
-
-    .language-switch a {
-      margin-left: 1rem;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
     }
 
     .button-group a {
@@ -142,13 +173,20 @@
     <div class="language-switch">
       <a href="de.html">DE</a>
     </div>
-    <h1>Sparde</h1>
+    <div class="header-content">
+      <img src="logo.png" alt="SparDE Logo" class="header-logo" />
+      <h1 class="header-title">SparDE</h1>
+    </div>
     <p>Сравнивай и экономь на страховке, энергии и интернете</p>
   </header>
 
   <div class="banner">
     📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии!
   </div>
+
+  <!-- Здесь оставляешь остальной код как есть -->
+</body>
+</html>
 
   <nav>
     <a href="#insurance">Страхование</a>

@@ -1,3 +1,6 @@
+Вы сказали:
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,19 +16,12 @@
       --alt-bg: #f0f0f0;
     }
 
-    body.dark {
-      --bg-color: #121212;
-      --text-color: #ffffff;
-      --alt-bg: #1f1f1f;
-    }
-
     body {
       font-family: Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
       padding: 0;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     header {
@@ -73,28 +69,17 @@
       padding-bottom: 1rem;
     }
 
-    .switchers {
+    .language-switch {
       position: absolute;
       top: 1rem;
       right: 1rem;
-      display: flex;
-      gap: 1rem;
     }
 
-    .switchers a,
-    .switchers button {
+    .language-switch a {
+      margin-left: 1rem;
       color: white;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
       text-decoration: none;
-    }
-
-    .switchers a:hover,
-    .switchers button:hover {
-      text-decoration: underline;
+      font-weight: bold;
     }
 
     footer {
@@ -108,10 +93,8 @@
 </head>
 <body>
   <header>
-    <div class="switchers" aria-label="Переключатели">
-      <a href="index.html" lang="ru" title="Русский">🇷🇺 RU</a>
-      <a href="de.html" lang="de" title="Deutsch">🇩🇪 DE</a>
-      <button id="themeToggle" title="Сменить тему">🌙</button>
+    <div class="language-switch">
+      <a href="de.html">DE</a>
     </div>
     <h1>Sparde</h1>
     <p>Сравнивай и экономь на страховке, энергии и интернете</p>
@@ -121,62 +104,13 @@
     📊 Найди самый выгодный тариф на страхование, энергию и интернет в Германии!
   </div>
 
-  <nav role="navigation">
+  <nav>
     <a href="#insurance">Страхование</a>
     <a href="#energy">Энергия</a>
     <a href="#internet">Интернет</a>
     <a href="#finance">Финансы</a>
     <a href="#blog">Блог</a>
   </nav>
-
-  <main>
-    <section id="insurance">
-      <h2>Страхование</h2>
-      <p>Здесь будет информация о страховых тарифах.</p>
-    </section>
-    <section id="energy">
-      <h2>Энергия</h2>
-      <p>Здесь будет информация об энергетических тарифах.</p>
-    </section>
-    <section id="internet">
-      <h2>Интернет</h2>
-      <p>Здесь будет информация об интернет-провайдерах.</p>
-    </section>
-    <section id="finance">
-      <h2>Финансы</h2>
-      <p>Здесь будет информация о банковских продуктах.</p>
-    </section>
-    <section id="blog">
-      <h2>Блог</h2>
-      <p>Последние статьи и советы по экономии.</p>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Sparde. Все права защищены.
-  </footer>
-
-  <script>
-    // Установка темы при загрузке
-    const toggleBtn = document.getElementById('themeToggle');
-    const userPreference = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (userPreference === 'dark' || (!userPreference && systemPrefersDark)) {
-      document.body.classList.add('dark');
-      toggleBtn.textContent = '☀️';
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-      toggleBtn.textContent = isDark ? '☀️' : '🌙';
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-  </script>
-</body>
-</html>
-
 
   <main>
     <section id="insurance">

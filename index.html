@@ -13,12 +13,19 @@
       --alt-bg: #f0f0f0;
     }
 
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --alt-bg: #1e1e1e;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
       padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     header {
@@ -51,31 +58,29 @@
     }
 
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
-      }
-      50% {
-        transform: scale(1.05);
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-      }
-      100% {
-        transform: scale(1);
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
-      }
+      0% { transform: scale(1); text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
+      50% { transform: scale(1.05); text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+      100% { transform: scale(1); text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
     }
 
-    .language-switch {
+    .language-switch, .theme-toggle {
       position: absolute;
       top: 1rem;
+    }
+    .language-switch {
       right: 1rem;
     }
+    .theme-toggle {
+      left: 1rem;
+    }
 
-    .language-switch a {
+    .language-switch a, .theme-toggle button {
       margin-left: 1rem;
       color: white;
-      text-decoration: none;
+      background: none;
+      border: none;
       font-weight: bold;
+      cursor: pointer;
     }
 
     nav {
@@ -84,6 +89,7 @@
       gap: 1rem;
       background-color: var(--alt-bg);
       padding: 0.5rem;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -151,25 +157,63 @@
       background-color: #0c5bd3;
     }
 
-    .bank-button img {
-      height: 24px;
-    }
-
     footer {
       background-color: var(--alt-bg);
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      color: #555;
+      color: #aaa;
     }
 
-    #blog-links {
-      display: none;
+    #blog-links { display: none; }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 500px;
+    }
+
+    form input, form textarea {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 0.6rem;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0c5bd3;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 1rem;
+      }
+      .header-title {
+        font-size: 1.5rem;
+      }
+      .bank-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
     }
   </style>
 </head>
 <body>
   <header>
+    <div class="theme-toggle">
+      <button id="theme-toggle">🌓</button>
+    </div>
     <div class="language-switch">
       <a href="de.html">DE</a>
     </div>
@@ -190,69 +234,21 @@
     <a href="#internet">Интернет</a>
     <a href="#mobile">Мобильная связь</a>
     <a href="#finance">Финансы</a>
-    <a href="#blog">Блог</a>
+    <a href="#contact">Контакты</a>
   </nav>
 
   <main>
-    <section id="insurance">
-      <h2>🚗 Автострахование</h2>
-      <p>Сравни предложения от ведущих страховых компаний.</p>
-      <div class="button-group">  
-        <a href="auto-insurance.html" target="_blank">🔍 Перейти к сравнениям</a>
-      </div> 
-    </section>
+    <!-- Секции услуг здесь -->
 
-    <section id="energy">
-      <h2>⚡ Электроэнергия</h2>
-      <p>Найдите выгодные тарифы на электроэнергию с экономией до 300€ в год.</p>
-      <div class="button-group">
-        <a href="electricity.html" target="_blank">⚡ Сравнить тарифы</a>
-      </div>
-    </section>
-
-    <section id="mobile">
-      <h2>📱 Мобильная связь</h2>
-      <p>Подбери лучший тариф под себя.</p>
-      <div class="button-group">
-        <a href="mobile.html" target="_blank">📲 Сравнить тарифы</a>
-      </div>
-    </section>
-
-   <section id="finance">
-  <h2>💳 Финансы и счета</h2>
-  <p>Открыть новый бесплатный счёт в банке:</p>
-  <div class="bank-buttons">
-    <a href="https://s.c24.de/dpJOCkWg5J/" target="_blank" class="bank-button">
-      <button>
-  C24 Bank
-</button>
-    </a>
-    <a href="https://revolut.com/referral/?referral-code=vladimcfu6!APR2-25-AR" target="_blank" class="bank-button">
-      <button>
-        Revolut
-      </button>
-    </a>
-    <a href="https://n26.com/r/vladimib3730" target="_blank" class="bank-button">
-      <button>
-        N26 Bank
-      </button>
-    </a>
-  </div>
-</section>
-    
-    <section id="blog">
-      <h2>🧠 Полезные советы и инструкции</h2>
-      <p>Как экономить, зачем нужно менять тарифы, почему это бесплатно для вас.</p>
-      <div class="button-group">
-        <a href="#" id="blog-link">📘 Читать подробнее</a>
-      </div>  
-      <ul id="blog-links">
-        <li><a href="free-service.html" target="_blank">Как получить услугу бесплатно и что она включает</a></li>
-        <li><a href="energy-saving.html" target="_blank">Экономия электроэнергии: до 300 евро в год</a></li>
-        <li><a href="new-banks.html" target="_blank">Новые банки Германии: бесплатные счета и быстрые переводы</a></li>
-        <li><a href="mobile-plan.html" target="_blank">Новая мобильная связь: лучшие тарифы</a></li>
-        <li><a href="car-insurance.html" target="_blank">Автострахование на новых условиях: как платить меньше</a></li>
-      </ul>
+    <section id="contact">
+      <h2>📬 Обратная связь</h2>
+      <p>Есть вопросы или предложения? Напишите нам!</p>
+      <form action="https://formspree.io/f/xgegnnpv" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" rows="4" placeholder="Сообщение" required></textarea>
+        <button type="submit">Отправить</button>
+      </form>
     </section>
   </main>
 
@@ -261,7 +257,16 @@
   </footer>
 
   <script>
-    document.getElementById("blog-link").addEventListener("click", function(event) {
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    });
+
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+
+    document.getElementById("blog-link")?.addEventListener("click", function(event) {
       event.preventDefault();
       var linksList = document.getElementById("blog-links");
       linksList.style.display = (linksList.style.display === "none" || linksList.style.display === "") ? "block" : "none";

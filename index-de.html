@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SparDE</title>
+  <style>
+    :root {
+      --main-color: #1a73e8;
+      --accent-color: #fbbc05;
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --alt-bg: #f0f0f0;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --alt-bg: #1e1e1e;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .language-switch a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      background-color: var(--alt-bg);
+      padding: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .banner {
+      background-color: var(--accent-color);
+      color: black;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+
+    .button-group a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--main-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-group a:hover {
+      background-color: #0c5bd3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="language-switch">
+      <a href="index-ru.html">RU</a>
+    </div>
+    <h1>SparDE</h1>
+    <p>Vergleiche und spare bei Versicherungen, Energie und Internet</p>
+  </header>
+
+  <div class="banner">
+    📊 Keine Zeit, sich mit Tarifen auseinanderzusetzen? Wir erledigen es für dich – völlig KOSTENLOS! Details findest du unter <a href="#tips">Nützliche Tipps und Anleitungen</a>
+  </div>
+
+  <nav>
+    <a href="#insurance">Versicherung</a>
+    <a href="#energy">Energie</a>
+    <a href="#internet">Internet</a>
+    <a href="#mobile">Mobilfunk</a>
+    <a href="#finance">Finanzen</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+
+  <main>
+    <section id="insurance">
+      <h2>🚗 Kfz-Versicherung</h2>
+      <p>Vergleiche Angebote führender Versicherungsanbieter.</p>
+      <div class="button-group">
+        <a href="auto-insurance.html" target="_blank">🔍 Angebote vergleichen</a>
+      </div>
+    </section>
+
+    <section id="energy">
+      <h2>⚡ Stromtarife</h2>
+      <p>Finde günstige Stromtarife mit Einsparungen von bis zu 480€ pro Jahr.</p>
+      <div class="button-group">
+        <a href="electricity.html" target="_blank">⚡ Tarife vergleichen</a>
+      </div>
+    </section>
+
+    <section id="internet">
+      <h2>🌐 Internet</h2>
+      <p>Finde die besten DSL-Tarife für dein Zuhause oder Büro.</p>
+      <div class="button-group">
+        <a href="https://a.check24.net/misc/click.php?pid=1087536&aid=18&deep=dsl-anbieterwechsel&cat=4" target="_blank">🌍 DSL-Tarife vergleichen</a>
+      </div>
+    </section>
+
+    <section id="mobile">
+      <h2>📱 Mobilfunk</h2>
+      <p>Finde den besten Tarif für dich.</p>
+      <div class="button-group">
+        <a href="mobile.html" target="_blank">📲 Tarife vergleichen</a>
+      </div>
+    </section>
+
+    <section id="finance">
+      <h2>💳 Finanzen & Konten</h2>
+      <p>Eröffne ein neues kostenloses Bankkonto:</p>
+      <div class="button-group">
+        <a href="https://s.c24.de/dpJOCkWg5J/" target="_blank">C24 Bank</a>
+        <a href="https://revolut.com/referral/?referral-code=vladimcfu6!APR2-25-AR" target="_blank">Revolut</a>
+        <a href="https://n26.com/r/vladimib3730" target="_blank">N26 Bank</a>
+      </div>
+    </section>
+
+    <section id="blog">
+      <h2>🧠 Nützliche Tipps & Anleitungen</h2>
+      <p>Wie du sparen kannst, warum es sinnvoll ist, Tarife zu wechseln und warum dieser Service kostenlos ist.</p>
+      <div class="button-group">
+        <a href="#" id="blog-link">📘 Mehr erfahren</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>📬 Kontakt</h2>
+      <p>Hast du Fragen oder Anregungen? Schreib uns!</p>
+      <form action="https://formspree.io/f/xanergra" method="POST">
+        <input type="text" name="name" placeholder="Dein Name" required />
+        <input type="email" name="email" placeholder="E-Mail" required />
+        <textarea name="message" rows="4" placeholder="Nachricht" required></textarea>
+        <button type="submit">Senden</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SparDE. Alle Rechte vorbehalten.</p>
+  </footer>
+</body>
+</html>

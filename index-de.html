@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SparDE</title>
   <style>
     :root {
@@ -36,50 +36,16 @@
       position: relative;
     }
 
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .header-logo {
-      height: 40px;
-      width: 40px;
-    }
-
-    .header-title {
-      font-size: 2rem;
-      margin: 0;
-      font-weight: bold;
-      animation: pulse 2s infinite;
-      letter-spacing: 1px;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
-      50% { transform: scale(1.05); text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
-      100% { transform: scale(1); text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
-    }
-
-    .language-switch, .theme-toggle {
+    .language-switch {
       position: absolute;
       top: 1rem;
-    }
-    .language-switch {
       right: 1rem;
     }
-    .theme-toggle {
-      left: 1rem;
-    }
 
-    .language-switch a, .theme-toggle button {
-      margin-left: 1rem;
+    .language-switch a {
       color: white;
-      background: none;
-      border: none;
       font-weight: bold;
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -130,97 +96,14 @@
     .button-group a:hover {
       background-color: #0c5bd3;
     }
-
-    .bank-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding-top: 1rem;
-    }
-
-    .bank-button button {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1.2rem;
-      background-color: var(--main-color);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 1rem;
-    }
-
-    .bank-button button:hover {
-      background-color: #0c5bd3;
-    }
-
-    footer {
-      background-color: var(--alt-bg);
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    #blog-links { display: none; }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      max-width: 500px;
-    }
-
-    form input, form textarea {
-      padding: 0.5rem;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-
-    form button {
-      background-color: var(--main-color);
-      color: white;
-      border: none;
-      padding: 0.6rem;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    form button:hover {
-      background-color: #0c5bd3;
-    }
-
-    @media (max-width: 600px) {
-      main {
-        padding: 1rem;
-      }
-      .header-title {
-        font-size: 1.5rem;
-      }
-      .bank-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-    }
   </style>
 </head>
 <body>
   <header>
-    <div class="theme-toggle">
-      <button id="theme-toggle">🌓</button>
-    </div>
     <div class="language-switch">
       <a href="index.html">RU</a>
     </div>
-    <div class="header-content">
-      <img src="logo.png" alt="SparDE Logo" class="header-logo" />
-      <h1 class="header-title">SparDE</h1>
-    </div>
+    <h1>SparDE</h1>
     <p>Vergleiche und spare bei Versicherungen, Energie und Internet</p>
   </header>
 

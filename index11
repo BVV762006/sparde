@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Сравнивай и экономь на страховке, энергии, интернете и мобильной связи в Германии с SparDE." />
+  <title>SparDE</title>
+  <style>
+    :root {
+      --main-color: #1a73e8;
+      --accent-color: #fbbc05;
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --alt-bg: #f0f0f0;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --alt-bg: #1e1e1e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .header-logo {
+      height: 48px;
+      width: 48px;
+    }
+
+    .header-title {
+      font-size: 2.25rem;
+      margin: 0;
+      font-weight: bold;
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 6px rgba(255,255,255,0.3); }
+      50% { transform: scale(1.05); text-shadow: 0 0 12px rgba(255,255,255,0.8); }
+    }
+
+    .theme-toggle, .language-switch {
+      position: absolute;
+      top: 1rem;
+    }
+
+    .theme-toggle { left: 1rem; }
+    .language-switch { right: 1rem; }
+
+    .theme-toggle button,
+    .language-switch a {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle button:hover,
+    .language-switch a:hover {
+      transform: scale(1.2);
+    }
+
+    .banner {
+      background-color: var(--accent-color);
+      color: black;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      background-color: var(--alt-bg);
+      padding: 0.75rem;
+    }
+
+    nav a {
+      color: var(--main-color);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .button-group a, .bank-button {
+      display: inline-block;
+      margin: 0.5rem 0.5rem 0 0;
+      padding: 0.6rem 1rem;
+      background-color: var(--main-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-group a:hover, .bank-button:hover {
+      background-color: #0c5bd3;
+    }
+
+    .bank-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .blog-list {
+      display: none;
+      margin-top: 1rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .blog-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 500px;
+    }
+
+    form input, form textarea {
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    form button {
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 0.7rem;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0c5bd3;
+    }
+
+    footer {
+      background-color: var(--alt-bg);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      .header-title { font-size: 1.6rem; }
+      nav { flex-direction: column; }
+      .bank-buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="theme-toggle">
+      <button id="theme-toggle" aria-label="Переключить тему">🌓</button>
+    </div>
+    <div class="language-switch">
+      <a href="index-de.html">DE</a>
+    </div>
+    <div class="header-content">
+      <img src="logo.png" alt="Логотип SparDE" class="header-logo" />
+      <h1 class="header-title">SparDE</h1>
+    </div>
+    <p>Сравнивай и экономь на страховке, энергии и интернете</p>
+  </header>
+
+  <div class="banner">
+    📊 Нет времени разбираться? Сделаем для Вас абсолютно БЕСПЛАТНО! <a href="#blog">Подробнее</a>
+  </div>
+
+  <nav>
+    <a href="#insurance">Страхование</a>
+    <a href="#energy">Энергия</a>
+    <a href="#internet">Интернет</a>
+    <a href="#mobile">Мобильная связь</a>
+    <a href="#finance">Финансы</a>
+    <a href="#blog">Блог</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+
+  <main>
+    <section id="insurance">
+      <h2>🚗 Автострахование</h2>
+      <p>Сравни предложения от ведущих страховых компаний.</p>
+      <div class="button-group">
+        <a href="auto-insurance.html" target="_blank">🔍 Перейти к сравнениям</a>
+      </div>
+    </section>
+
+    <section id="energy">
+      <h2>⚡ Электроэнергия</h2>
+      <p>Найдите выгодные тарифы на электроэнергию с экономией до 480€ в год.</p>
+      <div class="button-group">
+        <a href="electricity.html" target="_blank">⚡ Сравнить тарифы</a>
+      </div>
+    </section>
+
+    <section id="internet">
+      <h2>🌐 Интернет</h2>
+      <p>Подберите оптимальные интернет-тарифы для дома или офиса.</p>
+      <div class="button-group">
+        <a href="https://a.check24.net/misc/click.php?pid=1087536&aid=18&deep=dsl-anbieterwechsel&cat=4" target="_blank">🌍 Сравнить тарифы DSL</a>
+      </div>
+    </section>
+
+    <section id="mobile">
+      <h2>📱 Мобильная связь</h2>
+      <p>Подбери лучший тариф под себя.</p>
+      <div class="button-group">
+        <a href="mobile.html" target="_blank">📲 Сравнить тарифы</a>
+        <a href="https://h.sim24.de/23427b1382546" target="_blank">📲 SIM24.DE</a>
+        <a href="https://aklam.io/kbkk3e" target="_blank">📲 LEBARA</a>
+        <a href="https://www.sim.de/freundschaftsangebot" target="_blank">📲 SIM.DE</a>
+      </div>
+    </section>
+
+    <section id="finance">
+      <h2>💳 Финансы и счета</h2>
+      <p>Откройте бесплатный счёт в одном из популярных банков:</p>
+      <div class="bank-buttons">
+        <a href="https://s.c24.de/dpJOCkWg5J/" target="_blank" class="bank-button">C24 Bank</a>
+        <a href="https://revolut.com/referral/?referral-code=vladimcfu6" target="_blank" class="bank-button">Revolut</a>
+        <a href="https://n26.com/r/vladimib3730" target="_blank" class="bank-button">N26 Bank</a>
+        <a href="https://py.pl/127YOV" target="_blank" class="bank-button">PayPal</a>
+      </div>
+    </section>
+
+    <section id="blog">
+      <h2>🧠 Полезные советы и инструкции</h2>
+      <p><a href="#" id="blog-link" aria-expanded="false">📘 Читать подробнее</a></p>
+      <ul id="blog-links" class="blog-list">
+        <li><a href="free-service.html" target="_blank">Как получить услугу бесплатно и что она включает</a></li>
+        <li><a href="energy-saving.html" target="_blank">Экономия электроэнергии: до 480 евро в год</a></li>
+        <li><a href="new-banks.html" target="_blank">Новые банки Германии: бесплатные счета и быстрые переводы</a></li>
+        <li><a href="mobile-plan.html" target="_blank">Новая мобильная связь: лучшие тарифы</a></li>
+        <li><a href="car-insurance.html" target="_blank">Автострахование на новых условиях: как платить меньше</a></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>📬 Обратная связь</h2>
+      <p>Есть вопросы или предложения? Напишите нам!</p>
+      <form action="https://formspree.io/f/xanergra" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" rows="4" placeholder="Сообщение" required></textarea>
+        <button type="submit">Отправить</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SparDE. Все права защищены.</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const blogLink = document.getElementById("blog-link");
+    const blogList = document.getElementById("blog-links");
+
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    });
+
+    if (!localStorage.getItem("theme")) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.body.classList.add("dark");
+      }
+    } else if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+
+    blogLink?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isOpen = blogList.style.display === "block";
+      blogList.style.display = isOpen ? "none" : "block";
+      blogLink.setAttribute("aria-expanded", !isOpen);
+    });
+  </script>
+</body>
+</html>
